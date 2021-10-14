@@ -2,7 +2,7 @@
 
 # получаем кодировку для файла, с которым работаем
 F_N = open('test.txt', 'w', encoding='utf-8')
-F_N.write('test test test')
+F_N.write('тест тест тест')
 F_N.close()
 print(type(F_N))
 
