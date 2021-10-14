@@ -4,6 +4,7 @@
 ERR_STR = 'Программа'
 print(ERR_STR.encode('ascii'))
 
+print('----------------------------------------------------')
 # ошибка - строку, преобразованную в байты в кодировке utf-8
 # преобразуем в строку в кодировке ascii
 ERR_STR = 'Программа'
@@ -11,6 +12,7 @@ ERR_STR_BYTES = ERR_STR.encode('utf-8')
 ERR_STR = ERR_STR_BYTES.decode('ascii')
 print(ERR_STR)
 
+print('----------------------------------------------------')
 # ошибка - разные кодировки для преобразований
 ERR_STR = 'Testování'
 ERR_STR_BYTES = ERR_STR.encode('utf-16')

@@ -10,3 +10,9 @@ print(type(F_N))
 with open('test.txt', encoding='utf-8') as f_n:
     for el_str in f_n:
         print(el_str, end='')
+
+
+# # определение кодировки по умолчанию
+# import locale
+# default_encoding = locale.getpreferredencoding()
+# print(default_encoding)
