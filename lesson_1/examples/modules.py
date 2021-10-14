@@ -1,7 +1,7 @@
 """Модуль modules"""
 
 import subprocess
-import chardet
+import chardet   # необходима предварительная инсталляция!
 
 ARGS = ['ping', 'yandex.ru']
 YA_PING = subprocess.Popen(ARGS, stdout=subprocess.PIPE)
