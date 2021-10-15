@@ -26,3 +26,20 @@ BYTES_OBJ = b'\xd0\x9f\xd1\x80\xd0\xbe\xd0\xb3\xd1\x80\xd0\xb0\xd0\xbc\xd0\xbc\x
 print(type(BYTES_OBJ))
 BYTES_DEC = bytes.decode(BYTES_OBJ, encoding='utf-8')
 print(BYTES_DEC)
+
+# =======================================================================================
+print('----------------------------------------------------')
+# кодирование с помощью функции bytes()
+ENC_STR = 'Привет!'
+print(type(ENC_STR))
+ENC_STR_BYTES = bytes(ENC_STR, encoding='utf-8')
+print(ENC_STR_BYTES)
+
+print('----------------------------------------------------')
+# метод decode для класса bytes (кодировка указана как ключевой аргумент)
+BYTES_OBJ = b'\xd0\x9f\xd1\x80\xd0\xbe\xd0\xb3\xd1\x80\xd0\xb0\xd0\xbc\xd0\xbc\xd0\xb0'
+print(type(BYTES_OBJ))
+BYTES_DEC = str(BYTES_OBJ, encoding='utf-8')
+print('BYTES_DEC=', BYTES_DEC, type(BYTES_DEC))
+BYTES_DEC2 = str(BYTES_OBJ)
+print('BYTES_DEC2=', BYTES_DEC2, type(BYTES_DEC2))
