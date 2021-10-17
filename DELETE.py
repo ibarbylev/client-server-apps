@@ -27,3 +27,24 @@ with open('ttt.csv', 'w', newline='') as f:
 with open('ttt.csv') as f:
     data = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC, delimiter=';')
     print(list(data))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
