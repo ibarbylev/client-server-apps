@@ -1,7 +1,7 @@
 {
     "action": "msg",
     "encoding": "ascii",
-    "from": "account_name",
-    "message": "message",
-    "to": "account_name"
+    "from": "Петрова П.П.",
+    "message": "Привет!",
+    "to": "Иванову И.И."
 }
