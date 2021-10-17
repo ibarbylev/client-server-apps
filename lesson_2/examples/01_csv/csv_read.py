@@ -21,7 +21,6 @@ print()
 print('----- Разделение строки заголовков от содержимого ------')
 with open('kp_data.csv') as f_n:
     F_N_READER = csv.reader(f_n)
-
     F_N_HEADERS = next(F_N_READER)
     print('Headers: ', F_N_HEADERS)
     for row in F_N_READER:
