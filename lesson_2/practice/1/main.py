@@ -22,8 +22,11 @@ os_code_list, os_type_list. В этой же функции создать гл�
 import re
 import csv
 
+import chardet
+
+
 def get_data():
-    """Извлечение данных из txt"""
+    """Get data from txt-file"""
 
     os_prod_list = []
     os_name_list = []
@@ -32,22 +35,24 @@ def get_data():
     main_data = []
 
     for i in range(1, 4):
-        file_obj = open(f'info_{i}.txt')
-        data = file_obj.read()
+        with open(f'info_{i}.txt', 'rb') as file_obj:
+            data_bytes = file_obj.read()
+            result = chardet.detect(data_bytes)
+            data = data_bytes.decode(result['encoding'])
 
-        # Получаем список изготовителей системы
+        # get a list of OS manufacturers
         os_prod_reg = re.compile(r'Изготовитель системы:\s*\S*')
         os_prod_list.append(os_prod_reg.findall(data)[0].split()[2])
 
-        # Название ОС
+        # get a list of OS names
         os_name_reg = re.compile(r'Windows\s\S*')
         os_name_list.append(os_name_reg.findall(data)[0])
 
-        # Код продукта
+        # get a list of products code
         os_code_reg = re.compile(r'Код продукта:\s*\S*')
         os_code_list.append(os_code_reg.findall(data)[0].split()[2])
 
-        # Тип системы
+        # get a list of systems type
         os_type_reg = re.compile(r'Тип системы:\s*\S*')
         os_type_list.append(os_type_reg.findall(data)[0].split()[2])
 
@@ -56,23 +61,20 @@ def get_data():
 
     j = 1
     for i in range(0, 3):
-        row_data = []
-        row_data.append(j)
-        row_data.append(os_prod_list[i])
-        row_data.append(os_name_list[i])
-        row_data.append(os_code_list[i])
-        row_data.append(os_type_list[i])
+        row_data = [os_prod_list[i], os_name_list[i], os_code_list[i], os_type_list[i]]
         main_data.append(row_data)
         j += 1
     return main_data
 
+
 def write_to_csv(out_file):
-    """Запись данных в csv"""
+    """Write the data to csv-file"""
 
     main_data = get_data()
     with open(out_file, 'w', encoding='utf-8') as file:
         writer = csv.writer(file)
         for row in main_data:
             writer.writerow(row)
+
 
 write_to_csv('data_report.csv')
