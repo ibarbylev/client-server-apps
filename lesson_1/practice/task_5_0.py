@@ -3,13 +3,13 @@
 преобразовать результаты из байтовового в строковый тип на кириллице.
 """
 
-from subprocess import Popen, PIPE
+import subprocess
 from chardet import detect
 
 ARGS = [['ping', '-c', '5', 'yandex.ru'], ['ping', '-c', '5', 'youtube.com']]
 
 for arg in ARGS:
-    YA_PING = Popen(arg, stdout=PIPE)
+    YA_PING = subprocess.Popen(arg, stdout=subprocess.PIPE)
     for line in YA_PING.stdout:
         result = detect(line)
         print(result)

@@ -13,6 +13,8 @@ with open('test.txt', 'w') as file:
         file.write(f'{line}\n')
 file.close()
 
+
+# перезапись файла в нужной кодировке
 def encoding_convert():
     with open('test.txt', 'rb') as f:
         content_bytes = f.read()
@@ -21,6 +23,7 @@ def encoding_convert():
     content_text = content_bytes.decode(encoding)
     with open('test.txt', 'w', encoding='utf-8') as f:
         f.write(content_text)
+
 
 encoding_convert()
 
