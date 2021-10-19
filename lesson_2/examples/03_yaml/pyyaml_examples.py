@@ -1,9 +1,11 @@
 """Модуль pyyaml_examples"""
 
-import yaml  # pip3 install pyyaml
+# Attention!!! Need to install!
+# a pip3 install pyyaml
+import yaml
 
 # считываем данные
-with open('data_read.yaml') as f_n:
+with open('data_read.yaml', encoding='utf-8') as f_n:
     F_N_CONTENT = yaml.load(f_n, Loader=yaml.FullLoader)
     print(F_N_CONTENT)
 
@@ -13,10 +15,11 @@ TO_LIST = ['account_1', 'account_2', 'account_3']
 AS_SET = {1, 2, 2, 3}
 DATA_TO_YAML = {'action': ACTION_LIST, 'to': TO_LIST, 'names': AS_SET}
 
-with open('data_write.yaml', 'w') as f_n:
+with open('data_write.yaml', 'w', encoding='utf-8') as f_n:
     yaml.dump(DATA_TO_YAML, f_n, default_flow_style=True)
 
-with open('data_write.yaml') as f_n:
-    print(f_n.read())
+with open('data_write.yaml', encoding='utf-8') as f_n:
+    F_N_CONTENT = yaml.load(f_n, Loader=yaml.FullLoader)
+    print(F_N_CONTENT)
 
 
