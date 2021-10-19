@@ -1,8 +1,2 @@
-action:
-- msg_1
-- msg_2
-- msg_3
-to:
-- account_1
-- account_2
-- вася
+{action: [msg_1, msg_2, msg_3], names: !!set {1: null, 2: null, 3: null}, to: [account_1,
+    account_2, "\u0432\u0430\u0441\u044F"]}

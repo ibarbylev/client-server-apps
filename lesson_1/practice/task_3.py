@@ -11,31 +11,34 @@ VAR_2 = 'класс'
 VAR_3 = 'функция'
 VAR_4 = 'type'
 
-VAR_LIST = [VAR_1, VAR_2, VAR_3, VAR_4]
+WORDS = [VAR_1, VAR_2, VAR_3, VAR_4]
 
 # Вариант 1
-for el in VAR_LIST:
+for word in WORDS:
     try:
-        bytes(el, 'ascii')
+        bytes(word, 'ascii')
     except UnicodeEncodeError:
-        print(f'Слово "{el}" невозможно записать в виде байтовой строки')
+        print(f'Слово "{word}" невозможно записать в виде байтовой строки')
 
 # Вариант 2
-for el in VAR_LIST:
+for word in WORDS:
     try:
-        el.encode('ascii')
+        word.encode('ascii')
     except UnicodeEncodeError:
-        print(f'Слово "{el}" невозможно записать в виде байтовой строки')
+        print(f'Слово "{word}" невозможно записать в виде байтовой строки')
 
 # Вариант 3
-for el in VAR_LIST:
+for word in WORDS:
     try:
-        expr_obj = f"b'{el}'"
-        exec(expr_obj)
+        expr_obj = f"b'{word}'"
+        eval(expr_obj)
     except SyntaxError:
-        print(f'Слово "{el}" невозможно записать в виде байтовой строки')
+        print(f'Слово "{word}" невозможно записать в виде байтовой строки')
 
 # Вариант 4
-for el in VAR_LIST:
-    if ord(el[0]) > 255:
-        print(f'Слово "{el}" невозможно записать в виде байтовой строки')
+for word in WORDS:
+    for cher in word:
+        if ord(cher) > 127:
+            print(f'Слово "{word}" невозможно записать в виде байтовой строки')
+            break
+

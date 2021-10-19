@@ -1,36 +1,47 @@
-# пример списка в виде строки
+# List located in a line
 ['action', 'to', 'from', 'encoding', 'message']
 
-# пример структурированного списка
+# List located in a block
 - action
 - to
 - from
 - encoding
 - message
 
-# пример словаря в виде строки
+# =======================================================
+# Dictionary located in a line
 {'action': 'msg', 'to': 'account_name'}
 
-# пример словаря в виде блока
+# Dictionary located in a block
 'action': 'msg'
 'to': 'account_name'
 
-# оформление строк со специальными символами
-command: "action | to"
+# =======================================================
+# Set located in a line
+names: !!set {1: null, 2: null, 3: null}
 
-# примеры комбинаций элементов
-# словарь с элементами-списками
-message:
+# Set located in a block
+names: !!set
+  1: null
+  2: null
+  3: null
+
+
+# =======================================================
+# Dictionary with elements of different types located in a line
+{action: [msg_1, msg_2, msg_3], names: !!set {1: null, 2: null, 3: null}, to: [account_1,
+    account_2, account_3]}
+
+# Dictionary with elements of different types located in a block
+action:
 - msg_1
 - msg_2
 - msg_3
+names: !!set
+  1: null
+  2: null
+  3: null
 to:
 - account_1
 - account_2
 - account_3
-
-# список словарей
-- action: msg_1
-  to: account_1
-- action: msg_2
-  to: account_2
