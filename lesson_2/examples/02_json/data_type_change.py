@@ -16,7 +16,8 @@ print(type(TUPLE_EX))
 with open('tuple_ex.json', 'w') as f_n:
     json.dump(TUPLE_EX, f_n)
 
-OBJ = json.load(open('tuple_ex.json'))
+with open('tuple_ex.json') as f_n:
+    OBJ = json.load(f_n)
 print(type(OBJ))
 
 # ошибка - ограничения по типам данных
