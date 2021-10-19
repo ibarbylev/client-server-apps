@@ -11,6 +11,13 @@ with open('kp_data.csv', encoding='utf-8') as f_n:
         print(row)
 
 print()
+print('----- Можно прочитать как обычный текстовой файл ------')
+with open('kp_data.csv', encoding='utf-8') as f_n:
+    F_N_READER = f_n.read()
+    print(type(F_N_READER))
+    print(F_N_READER)
+
+print()
 print('----- Преобразование итератора в список ------')
 with open('kp_data.csv', encoding='utf-8') as f_n:
     F_N_READER = csv.reader(f_n)
