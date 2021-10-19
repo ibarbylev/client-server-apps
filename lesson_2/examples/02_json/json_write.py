@@ -36,7 +36,7 @@ with open('mes_example_write_3.json') as f_n:
 print()
 print('----- запись символов вместо записи кодовых точек -----')
 
-DICT_TO_JSON = {
+DICT_TO_JSON_2 = {
     "action": "msg",
     "to": "Иванову И.И.",
     "from": "Петрова П.П.",
@@ -45,7 +45,8 @@ DICT_TO_JSON = {
     }
 
 with open('mes_example_write_3.json', 'w', encoding='utf-8') as f_n:
-    json.dump(DICT_TO_JSON, f_n, sort_keys=True, indent=4, ensure_ascii=False)
+    json.dump(DICT_TO_JSON_2, f_n, sort_keys=True, indent=4)
+    # json.dump(DICT_TO_JSON_2, f_n, sort_keys=True, indent=4, ensure_ascii=False)
 
 with open('mes_example_write_3.json') as f_n:
     print(f_n.read())
