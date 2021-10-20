@@ -1,31 +1,44 @@
+"""
+It is a launcher for starting subprocesses for server and clients of two types: senders and listeners.
+for more information:
+https://stackoverflow.com/questions/67348716/kill-process-do-not-kill-the-subprocess-and-do-not-close-a-terminal-window
+"""
+
 import os
+import signal
 import subprocess
 import sys
 from time import sleep
 
-PROCESS = []
+
 PYTHON_PATH = sys.executable
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
-print(PYTHON_PATH, BASE_PATH)
 
+
+def get_subprocess(file_with_args):
+    sleep(1)
+    file_full_path = f"{PYTHON_PATH} {BASE_PATH}/{file_with_args}"
+    args = ["gnome-terminal", "--disable-factory", "--", "bash", "-c", file_full_path]
+    return subprocess.Popen(args, preexec_fn=os.setpgrp)
+
+
+process = []
 while True:
-    ACTION = input('Выберите действие: q - выход, '
-                   's - запустить сервер и клиенты, x - закрыть все окна: ')
+    TEXT_FOR_INPUT = "Выберите действие: q - выход, s - запустить сервер и клиенты, x - закрыть все окна:"
+    action = input(TEXT_FOR_INPUT)
 
-    if ACTION == 'q':
+    if action == "q":
         break
-    elif ACTION == 's':
-        PROCESS.append(subprocess.Popen(['gnome-terminal', '--', 'bash', '-c',
-                                         f'{PYTHON_PATH} {BASE_PATH}/server.py']))
+    elif action == "s":
+        process.append(get_subprocess("server.py"))
+
         for i in range(2):
-            sleep(1)
-            PROCESS.append(subprocess.Popen(['gnome-terminal', '--', 'bash', '-c',
-                                             f'{PYTHON_PATH} {BASE_PATH}/client.py -m send']))
+            process.append(get_subprocess("client.py -m send"))
+
         for i in range(2):
-            sleep(1)
-            PROCESS.append(subprocess.Popen(['gnome-terminal', '--', 'bash', '-c',
-                                             f'{PYTHON_PATH} {BASE_PATH}/client.py -m listen']))
-    elif ACTION == 'x':
-        while PROCESS:
-            VICTIM = PROCESS.pop()
-            VICTIM.terminate()
+            process.append(get_subprocess("client.py -m listen"))
+
+    elif action == "x":
+        while process:
+            victim = process.pop()
+            os.killpg(victim.pid, signal.SIGINT)
