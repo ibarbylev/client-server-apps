@@ -59,11 +59,18 @@ def get_data():
     headers = ['Изготовитель системы', 'Название ОС', 'Код продукта', 'Тип системы']
     main_data.append(headers)
 
-    j = 1
-    for i in range(0, 3):
-        row_data = [os_prod_list[i], os_name_list[i], os_code_list[i], os_type_list[i]]
-        main_data.append(row_data)
-        j += 1
+    data_for_rows = [os_prod_list, os_name_list, os_code_list, os_type_list]  # matrix 4 x 3
+
+    # make matrix (4 x 3) from matrix (3 x 4)
+    for idx in range(len(data_for_rows[0])):
+        line = [row[idx] for row in data_for_rows]
+        main_data.append(line)
+
+    # variant 2
+    # for idx in range(len(data_for_rows[0])):
+    #     line = list(map(lambda row: row[idx], data_for_rows))
+    #     main_data.append(line)
+
     return main_data
 
 
