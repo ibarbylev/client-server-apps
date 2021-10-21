@@ -71,6 +71,15 @@ def get_data():
     #     line = list(map(lambda row: row[idx], data_for_rows))
     #     main_data.append(line)
 
+    # variant 3
+    # for idx in range(len(data_for_rows[0])):
+    #     main_data.append([os_prod_list[idx], os_name_list[idx], os_code_list[idx], os_type_list[idx])
+
+    # variant 4 zip-transformation
+    # list(zip([1, 2, 3],                [(1, 4),
+    #          [4, 5, 6]))      ==>       (2, 5),
+    #                                     (3, 6)]
+
     return main_data
 
 

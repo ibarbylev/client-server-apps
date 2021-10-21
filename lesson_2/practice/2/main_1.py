@@ -16,7 +16,7 @@ import json
 
 def write_order_to_json(item: str, quantity: str, price: str, buyer: str, date: str) -> None:
     """
-     Writing to a json file
+    Writing function arguments to json file (in dictionary format)
     :param item: good
     :param quantity: quantity
     :param price: price
@@ -41,9 +41,9 @@ def write_order_to_json(item: str, quantity: str, price: str, buyer: str, date: 
         json.dump(data, f_in, indent=4)
 
 
-# initialisation (чтобы не удалять данные при каждой новой проверке скрипта)
-with open('orders_1.json', 'w', encoding='utf-8') as f_in:
-    json.dump({'orders': []}, f_in, indent=4)
+# # initialisation (чтобы при отладке не удалять данные)
+# with open('orders_1.json', 'w', encoding='utf-8') as f_in:
+#     json.dump({'orders': []}, f_in, indent=4)
 
 # Вот здесь важный момент. С латиницей все хорошо. Но стоит указать строку с кириллицей
 # и в json-файле получим
