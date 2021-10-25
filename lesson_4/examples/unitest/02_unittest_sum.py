@@ -6,7 +6,7 @@ def sum_kv_ij(i, j):
 
 
 class TestSumKV(unittest.TestCase):
-    def test_equal(self):
+    def testequal(self):
         self.assertEqual(sum_kv_ij(2, 3), 13)
 
 

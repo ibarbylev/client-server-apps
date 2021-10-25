@@ -29,7 +29,7 @@ def get_salary(line):
 
 class TestSalary(unittest.TestCase):
 
-    def test_get_salary_summ(self):
+    def test_get_salary_sum(self):
         self.assertEqual(get_salary('Лютиков   Руслан     60    1000'),
                          ('Лютиков Руслан', 60000))
 
