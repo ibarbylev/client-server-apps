@@ -7,6 +7,7 @@ sys.path.append(os.path.join(os.getcwd(), '..'))
 from common.variables import RESPONSE, ERROR, USER, ACCOUNT_NAME, TIME, ACTION, PRESENCE
 from client import create_presence, process_ans
 
+
 class TestClass(unittest.TestCase):
     '''
     Класс с тестами
