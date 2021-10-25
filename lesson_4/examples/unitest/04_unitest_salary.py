@@ -5,7 +5,6 @@
 Ромашкин    Сидор       45      500
 """
 
-import datetime
 from collections import namedtuple
 
 import unittest
