@@ -32,6 +32,11 @@ def test_get_salary_sum():
                      ('Лютиков Руслан', 60000), 'Неверная сумма'
 
 
+def test_get_incorrect_salary_sum():
+    assert get_salary('Лютиков   Руслан     60    1000') !=\
+                     ('Лютиков Руслан', 70000), 'Неверная сумма'
+
+
 def test_get_salary_fio():
     assert get_salary('Лютиков   Руслан     60    1000')[0] ==\
                      'Лютиков Руслан', 'Неверное имя'

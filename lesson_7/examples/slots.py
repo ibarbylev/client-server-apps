@@ -1,6 +1,7 @@
 """Обычный класс и класс со слотами"""
 
 from pympler import asizeof
+from timeit import timeit
 
 
 class BasicClass:
@@ -8,29 +9,61 @@ class BasicClass:
     В обычной ситуации в Python в объекты можно добавлять
     новые атрибуты вне описания класса
     """
-    def __init__(self, param_x, param_y):
-        self.param_x = param_x
-        self.param_y = param_y
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def calc(self):
+        return self.x ** self.y
 
 
-BC_OBJ = BasicClass(5, 6)
-print(BC_OBJ.__dict__)
-print(asizeof.asizeof((BC_OBJ)))
-BC_OBJ.param_z = 7
-print(BC_OBJ.__dict__)
-print(asizeof.asizeof((BC_OBJ)))
+bc = BasicClass(5, 6)
+print(bc.__dict__)
+print(asizeof.asizeof(bc))
+bc.z = 7
+print(bc.__dict__)
+print(asizeof.asizeof(bc))
 
-
+print('=' * 80)
 """
-class BasicClass:
-    __slots__ = ('param_x', 'param_y')
-    def __init__(self, param_x, param_y):
-        self.param_x = param_x
-        self.param_y = param_y
-
-BC_OBJ = BasicClass(5, 6)
-print(BC_OBJ.__slots__)
-print(asizeof.asizeof(BC_OBJ))
-#BC_OBJ.param_z = 7
-print(BC_OBJ.__slots__)
+The class variable __slots__: 
+1.) reduces memory size of instances
+2.) prevents automatic creation of __dict__ and disallows adding new attributes to instances 
+3.) reduces access time to attributes of class instances
 """
+
+
+class BasicClassSlots:
+    __slots__ = ('x', 'y')
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def calc(self):
+        return self.x ** self.y
+
+
+bc_slots = BasicClassSlots(5, 6)
+print(bc_slots.__slots__)
+print(asizeof.asizeof(bc_slots))
+# BCS_OBJ.param_z = 7
+# print(bs_slots_object.__dict__)
+
+
+print('=' * 80)
+"""
+3.) reduces access time to attributes of class instances
+"""
+print(timeit(bc.calc))
+print(timeit(bc_slots.calc))
+
+
+print('=' * 80)
+"""
+4.) In the case of using __slots__, we cannot add an instance attribute of the class, 
+    but we can add a class attribute.
+"""
+
+BasicClassSlots.z = 7
+print(bc_slots.z)
