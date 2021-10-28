@@ -133,6 +133,7 @@ def main():
                     send_message(waiting_client, message)
                 except:
                     LOGGER.info(f'Клиент {waiting_client.getpeername()} отключился от сервера.')
+                    waiting_client.close()
                     clients.remove(waiting_client)
 
 

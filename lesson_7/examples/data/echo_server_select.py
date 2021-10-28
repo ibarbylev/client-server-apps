@@ -16,8 +16,11 @@ def read_requests(read_clients, all_clients):
         try:
             data = sock.recv(1024).decode('utf-8')
             responses[sock] = data
+            # if data == 'exit':
+            #     sock.close()
         except Exception:
             print(f"Клиент {sock.fileno()} {sock.getpeername()} отключился")
+            sock.close()
             all_clients.remove(sock)
 
     return responses
@@ -50,7 +53,7 @@ def mainloop():
         # sock = socket(AF_INET, SOCK_STREAM)
         sock.bind(address)
         sock.listen(5)
-        sock.settimeout(0.2)
+        sock.settimeout(1)
         while True:
             try:
                 conn, addr = sock.accept()
