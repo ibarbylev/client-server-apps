@@ -43,7 +43,8 @@ def mainloop():
             try:
                 clients_read, clients_write, errors = select.select([], all_clients, [], 0)
 
-            except Exception:
+            except Exception as e:
+                print(e)
                 pass
 
             for client in clients_write:
@@ -53,9 +54,11 @@ def mainloop():
                     # отправляем время клиенту
                     client.send(time_str.encode('utf-8'))
 
-                except Exception:
+                except Exception as e:
+                    print(e)
                     # клиент отключился
                     all_clients.remove(client)
+
 
 print('Эхо-сервер запущен!')
 mainloop()
