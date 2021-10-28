@@ -10,7 +10,9 @@ def echo_client():
     with socket(AF_INET, SOCK_STREAM) as sock:
         sock.connect(ADDRESS)
         while True:
-            msg = input('Ваше сообщение: ')
+            msg = ''
+            while msg == '':
+                msg = input('Ваше сообщение: ')
             if msg == 'exit':
                 sock.shutdown(SHUT_RDWR)
                 sock.close()

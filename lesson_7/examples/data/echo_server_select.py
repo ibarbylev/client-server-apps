@@ -16,8 +16,6 @@ def read_requests(read_clients, all_clients):
         try:
             data = sock.recv(1024).decode('utf-8')
             responses[sock] = data
-            # if data == 'exit':
-            #     sock.close()
         except Exception:
             print(f"Клиент {sock.fileno()} {sock.getpeername()} отключился")
             sock.close()
@@ -32,6 +30,8 @@ def write_responses(requests, clients_write, all_clients):
     for sock in clients_write:
         if sock in requests:
             try:
+                if requests[sock] == '':
+                    raise Exception
                 resp = requests[sock].upper()
                 #print(resp)
                 sock.send(resp.encode('utf-8'))
