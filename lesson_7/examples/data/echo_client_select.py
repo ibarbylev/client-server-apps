@@ -10,11 +10,12 @@ def echo_client():
     with socket(AF_INET, SOCK_STREAM) as sock:
         sock.connect(ADDRESS)
         while True:
+            # Сообщение не должно состоять из пустой строки или пробелов
             msg = ''
-            while msg == '':
+            while msg.strip() == '':
                 msg = input('Ваше сообщение: ')
             if msg == 'exit':
-                sock.shutdown(SHUT_RDWR)
+                sock.shutdown(SHUT_RDWR)  # only for Ubuntu
                 sock.close()
                 break
             sock.send(msg.encode('utf-8'))
