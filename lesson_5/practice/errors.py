@@ -1,5 +1,6 @@
 """Ошибки"""
 
+
 class IncorrectDataRecivedError(Exception):
     """
     Исключение  - некорректные данные получены от сокета
@@ -14,6 +15,7 @@ class NonDictInputError(Exception):
     """
     def __str__(self):
         return 'Аргумент функции должен быть словарём.'
+
 
 class ReqFieldMissingError(Exception):
     """

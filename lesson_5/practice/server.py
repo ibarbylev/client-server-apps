@@ -11,8 +11,9 @@ from common.variables import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, \
     RESPONSE, DEFAULT_PORT, MAX_CONNECTIONS, ERROR
 from common.utils import get_message, send_message
 
-#Инициализация логирования сервера.
+# Инициализация логирования сервера.
 SERVER_LOGGER = logging.getLogger('server')
+
 
 def process_client_message(message):
     """
