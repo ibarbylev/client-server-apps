@@ -77,7 +77,7 @@ def main():
             message_from_cient = get_message(client)
             SERVER_LOGGER.debug(f'Получено сообщение {message_from_cient}')
             response = process_client_message(message_from_cient)
-            SERVER_LOGGER.info(f'Cформирован ответ клиенту {response}')
+            SERVER_LOGGER.info(f'Сформирован ответ клиенту {response}')
             send_message(client, response)
             SERVER_LOGGER.debug(f'Соединение с клиентом {client_address} закрывается.')
             client.close()
@@ -86,7 +86,7 @@ def main():
                                 f'клиента {client_address}. Соединение закрывается.')
             client.close()
         except IncorrectDataRecivedError:
-            SERVER_LOGGER.error(f'От клиента {client_address} gриняты некорректные данные. '
+            SERVER_LOGGER.error(f'От клиента {client_address} приняты некорректные данные. '
                                 f'Соединение закрывается.')
             client.close()
 
