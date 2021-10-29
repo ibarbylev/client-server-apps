@@ -14,7 +14,7 @@ LOG = logging.getLogger('basic')
 # обработчики позволяют переопределить поведение корневого регистратора - log
 CRIT_HAND = logging.StreamHandler(sys.stderr)
 # выводит в поток сообщения с уровнем CRITICAL
-#crit_hand.setLevel(logging.DEBUG)
+CRIT_HAND.setLevel(logging.DEBUG)
 
 # Создать объект Formatter
 # Определить формат сообщений

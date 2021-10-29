@@ -17,7 +17,7 @@ STREAM_HANDLER = logging.StreamHandler(sys.stderr)
 STREAM_HANDLER.setLevel(logging.INFO)
 
 # Создать обработчик который выводит сообщения в файл
-FILE_HANDLER = logging.FileHandler('app_4.log')
+FILE_HANDLER = logging.FileHandler('app_4.log', encoding='utf-8')
 FILE_HANDLER.setLevel(logging.INFO)
 
 # Создать объект Formatter

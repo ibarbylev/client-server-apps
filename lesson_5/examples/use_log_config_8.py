@@ -10,10 +10,12 @@ import log_config_7
 # теперь нужно его просто получить
 LOG = logging.getLogger('app.main')
 
+
 def main():
     ''' Тестовая главная функция
     '''
     LOG.debug('Старт приложения')
+
 
 if __name__ == '__main__':
     main()
