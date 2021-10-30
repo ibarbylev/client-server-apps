@@ -26,7 +26,7 @@ def some_text():
     print('вычисления')
 
 
-some_text()
+print(type(some_text), some_text.__name__)
 
 #some_text = decorator(some_text)
 #some_text()
