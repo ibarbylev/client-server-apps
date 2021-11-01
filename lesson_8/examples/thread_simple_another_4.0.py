@@ -14,6 +14,7 @@ def writer(mes, event_for_wait, event_for_set):
     """
     for i in range(10):
         # ожидать установки флага события в True
+        # (т.е. потоки, чьи события == False, здесь останавливаются и ждут)
         event_for_wait.wait()
         # сбросить флаг события c True на False
         event_for_wait.clear()

@@ -23,6 +23,7 @@ THR2 = Thread(target=clock, args=(3, ))
 Их называют демонами (daemons). Проверить, является ли поток демоном, можно методом isDaemon(). 
 Если является, метод вернёт истину.
 """
+print(f"Время запуска основной программы: {time.ctime()}")
 start = time.time()
 # THR1.daemon = True
 THR1.start()
@@ -30,6 +31,7 @@ THR2.start()
 THR1.join()
 THR2.join()
 end = time.time()
+print(f"Время окончания основной программы: {time.ctime()}")
 print('end-start =', end-start)
 
 # все потоки начинаются одновременно
