@@ -11,7 +11,7 @@ def clock(interval):
         time.sleep(interval)
         print(interval)
         print(f"Текущее время: {time.ctime()}")
-        break
+        # break
 
 
 THR1 = Thread(target=clock, args=(2, ))
@@ -27,11 +27,10 @@ start = time.time()
 # THR1.daemon = True
 THR1.start()
 THR2.start()
-# THR1.join()
-# THR2.join()
+THR1.join()
+THR2.join()
 end = time.time()
 print('end-start =', end-start)
 
-# все потоки начинаются одновременно
-# сначала отрабатывает основной поток
-# затем - первый и затем - второй
+# первый, второй и основной потоки начинают одновременно
+# первый, второй потоки работает даже после завершения основного

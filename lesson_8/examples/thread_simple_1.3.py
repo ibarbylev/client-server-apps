@@ -26,12 +26,12 @@ THR2 = Thread(target=clock, args=(3, ))
 start = time.time()
 # THR1.daemon = True
 THR1.start()
+THR1.join()
 THR2.start()
-# THR1.join()
-# THR2.join()
+THR2.join()
 end = time.time()
 print('end-start =', end-start)
 
-# все потоки начинаются одновременно
-# сначала отрабатывает основной поток
-# затем - первый и затем - второй
+# сначала отрабатывает первый поток
+# после завершения первоноо, начинате и заканчивает второй
+# основной поток ждёт их завершения

@@ -2,6 +2,11 @@
 
 import threading
 
+marks = {
+    'Я-первый поток': ['EVENT_2', 'EVENT_1'],
+    'Я-второй поток': ['EVENT_1', 'EVENT_2'],
+}
+
 
 def writer(mes, event_for_wait, event_for_set):
     """
@@ -14,14 +19,23 @@ def writer(mes, event_for_wait, event_for_set):
     """
     for i in range(10):
         # ожидать установки флага события в True
+        print('=' * 50)
+        print(f'1={i}-mes={mes}, event_for_wait={marks[mes][0]}, event_for_set={marks[mes][1]}')
+        print(f'EVENT_1={EVENT_1.is_set()}, EVENT_2={EVENT_2.is_set()}')
         event_for_wait.wait()
         # сбросить флаг события c True на False
+        print(f'2-mes={mes}, event_for_wait={marks[mes][0]}, event_for_set={marks[mes][1]}')
+        print(f'EVENT_1={EVENT_1.is_set()}, EVENT_2={EVENT_2.is_set()}')
         event_for_wait.clear()
         # выводим параметр
+        print(f'3-mes={mes}, event_for_wait={marks[mes][0]}, event_for_set={marks[mes][1]}')
+        print(f'EVENT_1={EVENT_1.is_set()}, EVENT_2={EVENT_2.is_set()}')
         print(f'{i} - {mes}')
         # устанавливаем флага события в True
         # потоки, которые его ожидают, активизируются
         event_for_set.set()
+        print(f'4-mes={mes}, event_for_wait={marks[mes][0]}, event_for_set={marks[mes][1]}')
+        print(f'EVENT_1={EVENT_1.is_set()}, EVENT_2={EVENT_2.is_set()}')
 
 
 # определяем объекты-события
@@ -39,7 +53,9 @@ THR_2 = threading.Thread(target=writer, args=('Я-второй поток', EVEN
 
 # устанавливаем значение True
 # потоки, которые этого ждут - пробуждаются
+print(f'before sef: EVENT_1={EVENT_1.is_set()}, EVENT_2={EVENT_2.is_set()}')
 EVENT_1.set()
+print(f'after set: EVENT_1={EVENT_1.is_set()}, EVENT_2={EVENT_2.is_set()}')
 
 # запускаем потоки
 THR_1.start()
