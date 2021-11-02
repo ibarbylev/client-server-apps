@@ -34,6 +34,7 @@ some_text()
 # ==========================================
 # how to get the function name?
 # print(type(some_text), some_text.__name__)
+# print(type(some_text), some_text.__doc__)
 
 # ==========================================
 # how to get the function result?
