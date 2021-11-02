@@ -27,6 +27,15 @@ def some_text():
 
 
 some_text()
-# print(type(some_text), some_text.__name__)
 
 # some_text = decorator(some_text)
+# some_text()
+
+# ==========================================
+# how to get the function name?
+# print(type(some_text), some_text.__name__)
+
+# ==========================================
+# how to get the function result?
+# print(some_text())
+

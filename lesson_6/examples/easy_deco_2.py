@@ -15,7 +15,7 @@ def decorator(func):
     return wrapper
 
 
-@decorator
+# @decorator
 def get_wp():
     """
     получаем ответ сервера
@@ -26,4 +26,4 @@ def get_wp():
     return res
 
 
-get_wp()
+print(get_wp())
