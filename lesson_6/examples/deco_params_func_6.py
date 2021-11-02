@@ -25,7 +25,7 @@ def decorator(iters):
     return real_decorator
 
 
-@decorator(iters=10)
+@decorator(10)
 def get_wp(url):
     """Запрос"""
     res = requests.get(url)
