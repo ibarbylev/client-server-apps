@@ -10,14 +10,16 @@ def decorator(iters):
         """Сам декоратор"""
         def wrapper(*args, **kwargs):
             """Обертка"""
-            total = 0
-            for _ in range(iters):
+            total_time = 0
+            for i in range(iters):
                 start = time.time()
-                return_value = func(*args, **kwargs)
+                func(*args, **kwargs)
                 end = time.time()
-                total = total + (end-start)
-            print(f'Среднее время выполнения: {round(total/iters, 2)} секунд')
-            return return_value
+                delta = end - start
+                total_time += delta
+                print(f'#{i + 1}: {delta:.2f} sec')
+
+            print(f'Среднее время выполнения: {total_time / iters:.2f} секунд')
 
         return wrapper
     return real_decorator
