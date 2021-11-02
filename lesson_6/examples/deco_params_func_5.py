@@ -18,6 +18,7 @@ def sleep(timeout):
         return decorated
     return decorator
 
+
 @sleep(3)
 def factorial(param):
     """Вычисляем факториал"""
@@ -25,6 +26,7 @@ def factorial(param):
         return 1
     else:
         return param * factorial(param - 1)
+    
 
 print(' -- Использован декоратор, реализованный через функцию --')
 print('!!! Обратите внимание на то, сколько раз будет вызван декоратор (рекурсия) !!!')
