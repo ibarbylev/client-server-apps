@@ -11,7 +11,6 @@ class Sleep:
         self.timeout = timeout
 
     def __call__(self, func):
-
         def decorated(*args, **kwargs):
             """Обертка"""
             time.sleep(self.timeout)
