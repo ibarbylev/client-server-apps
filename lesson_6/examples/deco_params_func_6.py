@@ -5,6 +5,7 @@ import requests
 
 
 def decorator(iters):
+    print('Этот декоратор!!!!')
     """Внешняя функция (формально - декоратор)"""
     def real_decorator(func):
         """Сам декоратор"""
@@ -32,4 +33,4 @@ def get_wp(url):
     return res
 
 
-get_wp('https://google.com')
+# get_wp('https://google.com')
