@@ -3,7 +3,7 @@
 Обработка клиентов осуществляется функцией select
 """
 
-import select
+from select import select
 from socket import socket, AF_INET, SOCK_STREAM
 
 
@@ -16,7 +16,8 @@ def read_requests(read_clients, all_clients):
         try:
             data = sock.recv(1024).decode('utf-8')
             responses[sock] = data
-        except Exception:
+        except Exception as e:
+            print(e)
             print(f"Клиент {sock.fileno()} {sock.getpeername()} отключился")
             sock.close()
             all_clients.remove(sock)
@@ -67,17 +68,16 @@ def mainloop():
                 clients_read = []
                 clients_write = []
                 try:
-                    clients_read, clients_write, errors = \
-                        select.select(all_clients, all_clients, [], wait)
-                    #print(clients_read)
-                #   print(clients_write)
-                except Exception:
-                    pass
+                    clients_read, clients_write, errors = select(all_clients, all_clients, [], wait)
+                    # print(clients_read)
+                    # print(clients_write)
+                except Exception as e:
+                    print(e)
 
                 requests = read_requests(clients_read, all_clients)
                 print(requests)
                 if requests:
-                    #print(requests)
+                    # print(requests)
                     write_responses(requests, clients_write, all_clients)
 
 

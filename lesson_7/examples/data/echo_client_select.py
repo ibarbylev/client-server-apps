@@ -15,8 +15,6 @@ def echo_client():
             while msg.strip() == '':
                 msg = input('Ваше сообщение: ')
             if msg == 'exit':
-                sock.shutdown(SHUT_RDWR)  # only for Ubuntu
-                sock.close()
                 break
             sock.send(msg.encode('utf-8'))
             data = sock.recv(1024).decode('utf-8')
