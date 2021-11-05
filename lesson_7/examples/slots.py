@@ -65,5 +65,5 @@ print('=' * 80)
     but we can add a class attribute.
 """
 
-BasicClassSlots.z = 7
-print(bc_slots.z)
+BasicClassSlots.CLASS_ATTR = 555
+print(bc_slots.CLASS_ATTR)
