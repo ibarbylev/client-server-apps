@@ -1,4 +1,7 @@
-"""Класс-поток"""
+"""
+Класс-поток
+Длительность потоков СЛУЧАЙНАЯ
+"""
 
 import time
 import random
@@ -15,6 +18,7 @@ class MyThread(Thread):
     def run(self):
         """Запуск следующих команд в потоке"""
         amount = random.randint(1, 5)
+        # amount = 2
         time.sleep(amount)
         msg = f"Поток {self.name} запущен"
         print(msg)
@@ -31,3 +35,5 @@ def create_threads():
 
 if __name__ == "__main__":
     create_threads()
+
+# Длительность потоков СЛУЧАЙНАЯ

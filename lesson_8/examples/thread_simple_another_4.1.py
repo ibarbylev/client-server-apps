@@ -1,4 +1,6 @@
-﻿"""Поток с объектами-событиями"""
+﻿"""
+Поток с объектами-событиями (с комментариями)
+"""
 
 import threading
 
@@ -62,7 +64,7 @@ THR_2 = threading.Thread(target=writer, args=('Я-второй поток', EVEN
 # устанавливаем значение True
 # потоки, которые этого ждут - пробуждаются
 print('========== установка собития #1 в True ==========')
-print(f'before sef: EVENT_1={EVENT_1.is_set()}, EVENT_2={EVENT_2.is_set()}')
+print(f'before set: EVENT_1={EVENT_1.is_set()}, EVENT_2={EVENT_2.is_set()}')
 EVENT_1.set()
 print(f'after set: EVENT_1={EVENT_1.is_set()}, EVENT_2={EVENT_2.is_set()}')
 
