@@ -17,6 +17,12 @@ HANDL_BYTES = HANDL_UNICODE.encode('ascii', 'ignore')
 print('ignore: ', HANDL_BYTES)
 
 print('----------------------------------------------------')
+# игнорирование ошибки при кодировании
+HANDL_UNICODE = 'Testování'
+HANDL_BYTES = HANDL_UNICODE.encode('ascii', 'xmlcharrefreplace')
+print('xmlcharrefreplace: ', HANDL_BYTES)
+
+print('----------------------------------------------------')
 # игнорирование ошибки при декодировании
 HANDL_STR = 'Testování'
 HANDL_STR_BYTES = HANDL_STR.encode('utf-8')
