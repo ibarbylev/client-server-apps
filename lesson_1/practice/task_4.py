@@ -11,17 +11,17 @@ VAR_4_STR = 'standard'
 
 STR_LIST = [VAR_1_STR, VAR_2_STR, VAR_3_STR, VAR_4_STR]
 
-ELEMS_B = []
+result_bytes = []
 for el in STR_LIST:
     el_b = el.encode('utf-8')
-    ELEMS_B.append(el_b)
+    print(el_b)
+    result_bytes.append(el_b)
 
-print(ELEMS_B)
 print()
 
-ELEMS_STR = []
-for el in ELEMS_B:
+result_str = []
+for el in result_bytes:
     el_str = el.decode('utf-8')
-    ELEMS_STR.append(el_str)
+    result_str.append(el_str)
 
-print(ELEMS_STR)
+print(result_str)

@@ -4,34 +4,16 @@
 """
 
 import subprocess
+from chardet import detect
 
-import chardet
+URLS = ['yandex.ru', 'youtube.com']
 
-# решение Никиты Черенкова
-
-ping_ya = subprocess.Popen(('ping', 'ya.ru'), stdout=subprocess.PIPE, encoding='utf-8')
-
-for i, line in enumerate(ping_ya.stdout):
-    ping_ya.kill() if i == 5 else print(line)   
-
-
-# решение Сергея Аверченкова
-  
-def ping_service(service):
-    args = ['ping', service]
-    ping = subprocess.Popen(args, stdout=subprocess.PIPE)
-    count = 0  # Для выхода из режима пингования
-    for line in ping.stdout:
-        result = chardet.detect(line)
+for url in URLS:
+    args = ['ping', '-c', '4', url]
+    YA_PING = subprocess.Popen(args, stdout=subprocess.PIPE)
+    for line in YA_PING.stdout:
+        result = detect(line)
+        print(result)
         line = line.decode(result['encoding']).encode('utf-8')
         print(line.decode('utf-8'))
-        if count == 4:
-            break
-        count += 1
 
-
-ping_service('yandex.ru')
-ping_service('youtube.com')
-
-    
-       

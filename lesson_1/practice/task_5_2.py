@@ -4,15 +4,13 @@
 """
 
 import subprocess
-from chardet import detect
+import chardet
 
-ARGS = [['ping', '-c', '5', 'yandex.ru'], ['ping', '-c', '5', 'youtube.com']]
+URLS = ['yandex.ru', 'youtube.com']
+for url in URLS:
+    ping_ya = subprocess.Popen(('ping', url), stdout=subprocess.PIPE)
 
-for arg in ARGS:
-    YA_PING = subprocess.Popen(arg, stdout=subprocess.PIPE)
-    for line in YA_PING.stdout:
-        result = detect(line)
-        print(result)
+    for i, line in enumerate(ping_ya.stdout):
+        result = chardet.detect(line)
         line = line.decode(result['encoding']).encode('utf-8')
-        print(line.decode('utf-8'))
-
+        print(line.decode('utf-8')) if i < 5 else ping_ya.kill()

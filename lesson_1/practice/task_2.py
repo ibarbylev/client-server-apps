@@ -5,13 +5,15 @@
 и определить тип, содержимое и длину соответствующих переменных.
 """
 
-STR_A = b'class'
-STR_B = b'function'
-STR_C = b'method'
+STR_A = 'class'
+STR_B = 'function'
+STR_C = 'method'
 
 STR_LIST = [STR_A, STR_B, STR_C]
 
-for el in STR_LIST:
-    print(type(el))
+for el_str in STR_LIST:
+    el = eval(f"b'{el_str}'")
+    print('=' * 50)
+    print('type: ', type(el))
     print(el)
-    print(len(el))
+    print('length of variable in bytes: ', len(el))
