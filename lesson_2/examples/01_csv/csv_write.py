@@ -9,12 +9,18 @@ DATA = [['hostname', 'vendor', 'model', 'location'],
         ['kp4', 'Cisco', 2960, 'Tomsk, str']]
 
 print()
-print('----- простая запись данных в файл .csv и вывод результата -----')
+print('----- простая запись данных в файл .csv построчно -----')
 with open('kp_data_write_1.csv', 'w', encoding='utf-8') as f_n:
     F_N_WRITER = csv.writer(f_n)
     for row in DATA:
         F_N_WRITER.writerow(row)
 
+print('----- простая запись данных в файл .csv всего массива сразу -----')
+with open('kp_data_write_1_1.csv', 'w', encoding='utf-8') as f_n:
+    F_N_WRITER = csv.writer(f_n)
+    F_N_WRITER.writerows(DATA)
+
+print()
 print('----- читаем как txt файл -----')
 with open('kp_data_write_1.csv', encoding='utf-8') as f_n:
     LINES = f_n.read()
@@ -29,7 +35,7 @@ with open('kp_data_write_1.csv', encoding='utf-8') as f_n:
 print()
 print('----- quoting=csv.QUOTE_NONNUMERIC только при записи -----')
 with open('kp_data_write_2.csv', 'w', encoding='utf-8') as f_n:
-    F_N_WRITER = csv.writer(f_n, quoting=csv.QUOTE_ALL)
+    F_N_WRITER = csv.writer(f_n, quoting=csv.QUOTE_NONNUMERIC)
     for row in DATA:
         F_N_WRITER.writerow(row)
 

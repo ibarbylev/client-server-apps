@@ -44,9 +44,9 @@ DICT_TO_JSON_2 = {
     "message": "Привет!"
     }
 
-with open('mes_example_write_3.json', 'w', encoding='utf-8') as f_n:
+with open('mes_example_write_4.json', 'w', encoding='utf-8') as f_n:
     json.dump(DICT_TO_JSON_2, f_n, sort_keys=True, indent=4)
     # json.dump(DICT_TO_JSON_2, f_n, sort_keys=True, indent=4, ensure_ascii=False)
 
-with open('mes_example_write_3.json') as f_n:
+with open('mes_example_write_4.json') as f_n:
     print(f_n.read())

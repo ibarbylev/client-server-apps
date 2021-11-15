@@ -35,6 +35,15 @@ with open('dict_to_json.json') as f_n:
     OBJ = json.loads(F_N_CONTENT)
     print(OBJ)
 
+"""
+тип данных set в json совершенно не допустим!!!
+"""
+# DICT_TO_JSON = {('action', 'to'): 'msg', 'from': 'account_name', 'set': {1, 2, 3}}
+#
+# with open('dict_to_json.json', 'w') as f_n:
+#     json.dump(DICT_TO_JSON, f_n, skipkeys=True)
+
+
 # конвертация ключей-чисел в строку
 MY_DICT = {5: 300, 1: 400}
 DICT_TO_JSON = json.dumps(MY_DICT)
