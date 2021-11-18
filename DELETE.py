@@ -1,50 +1,6 @@
-class InfinityIterator:
-    """
-    The class returns an infinite sequence of even numbers
-    """
-
-    def __init__(self, n_max=10000000):
-        self.n_max = n_max
-
-    def __iter__(self):
-        self.n = -2
-        return self
-
-    def __next__(self):
-        if self.n < self.n_max:
-            self.n += 2
-            return self.n
-        else:
-            raise StopIteration
+from subprocess import Popen, PIPE, STDOUT
 
 
-import csv
-
-ll = [[1, 2, 3, 'abc'], [1, 2, 3, 'abc']]
-with open('ttt.csv', 'w', newline='') as f:
-    csv.writer(f, quoting=csv.QUOTE_NONNUMERIC, delimiter=';').writerows(ll)
-
-with open('ttt.csv') as f:
-    data = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC, delimiter=';')
-    print(list(data))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+p = Popen(['grep', 'f'], stdout=PIPE, stdin=PIPE, stderr=STDOUT)
+grep_stdout = p.communicate(input=b'one\ntwo\nthree\nfour\nfive\nsix\n')[0]
+print(grep_stdout.decode())

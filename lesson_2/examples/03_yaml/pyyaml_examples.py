@@ -7,6 +7,7 @@ import yaml
 # считываем данные
 with open('data_read.yaml', encoding='utf-8') as f_n:
     F_N_CONTENT = yaml.load(f_n, Loader=yaml.FullLoader)
+    print(type(F_N_CONTENT))
     print(F_N_CONTENT)
 
 # изменяем формат записи
