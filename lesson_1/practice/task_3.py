@@ -42,3 +42,7 @@ for word in WORDS:
             print(f'Слово "{word}" невозможно записать в виде байтовой строки')
             break
 
+# Вариант 5
+for word in WORDS:
+    if not word.isascii():
+        print(f'Слово "{word}" невозможно записать в виде байтовой строки')
