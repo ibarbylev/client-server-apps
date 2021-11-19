@@ -36,6 +36,9 @@ def get_data():
 
     return [headers, os_prod_list, os_name_list, os_code_list, os_type_list]
 
+    # data_transformed = list(zip(os_prod_list, os_name_list, os_code_list, os_type_list))
+    # return [headers] + data_transformed
+
 
 def write_to_csv(data):
     with open('anti_result.csv', 'w', encoding="utf-8") as f:
