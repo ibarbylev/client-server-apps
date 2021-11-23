@@ -1,5 +1,6 @@
 """
 Фамилия     Имя         Часов   Ставка
+Лютиков     Руслан      60      1000
 Иванов      Иван        45      400
 Докукин     Филимон     20      1000
 Ромашкин    Сидор       45      500
@@ -51,8 +52,9 @@ def test_get_salary_wrong_format():
 
 
 if __name__ == "__main__":
-    test_get_salary_fio()
     test_get_salary_sum()
+    test_get_incorrect_salary_sum()
+    test_get_salary_fio()
     test_get_salary_empty()
     test_get_salary_wrong_format()
 
