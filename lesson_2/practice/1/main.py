@@ -80,6 +80,11 @@ def get_data():
     #          [4, 5, 6]))      ==>       (2, 5),
     #                                     (3, 6)]
 
+    # variant 5 T-transformation in numpy
+    # import numpy as np
+    # main_data = np.array(main_data, dtype=str).T.tolist()
+    # создаём массив numpy, трансформируем его (.T) и тут же снова превращаем в список (tolist)
+
     return main_data
 
 
