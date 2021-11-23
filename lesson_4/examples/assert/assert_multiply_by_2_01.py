@@ -47,4 +47,11 @@ print(multiply_by_2(5))
 
 
 if __name__ == "__main__":
-    pass
+    test_correct_multiply_positive()
+    test_correct_multiply_negative()
+    test_incorrect_multiply_positive()
+    test_incorrect_multiply_negative()
+    test_correct_multiply_by_zero()
+    test_incorrect_multiply_by_str()
+    test_incorrect_multiply_by_float()
+
