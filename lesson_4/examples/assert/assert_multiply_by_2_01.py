@@ -33,12 +33,12 @@ def test_correct_multiply_by_zero():
     assert multiply_by_2(0) == 0, 'Multiply by zero is not equal zero!'
 
 
-def test_incorrect_multiply_by_str():
+def test_correct_multiply_by_str():
     assert multiply_by_2("str") == 'Error!!! Argument <num> must be integer!!!', \
         'Wrong answer if <num> is not integer!'
 
 
-def test_incorrect_multiply_by_float():
+def test_correct_multiply_by_float():
     assert multiply_by_2(0.1) == 'Error!!! Argument <num> must be integer!!!', \
         'Wrong answer if <num> is not integer!'
 
@@ -52,6 +52,6 @@ if __name__ == "__main__":
     test_incorrect_multiply_positive()
     test_incorrect_multiply_negative()
     test_correct_multiply_by_zero()
-    test_incorrect_multiply_by_str()
-    test_incorrect_multiply_by_float()
+    test_correct_multiply_by_str()
+    test_correct_multiply_by_float()
 
