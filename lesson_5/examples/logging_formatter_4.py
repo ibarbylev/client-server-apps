@@ -1,5 +1,5 @@
 """
-Журналирование (логгирование) с использованием модуля logging
+Логгирование с использованием модуля logging
 Расширенная настройка. Форматирование, обработчики
 """
 
@@ -22,7 +22,7 @@ FILE_HANDLER.setLevel(logging.ERROR)
 
 # Создать объект Formatter
 # Определить формат сообщений
-FORMATTER = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s ")
+FORMATTER = logging.Formatter("%(asctime)s %(levelname)-8s - %(message)s ")
 
 # подключить объект Formatter к обработчикам
 STREAM_HANDLER.setFormatter(FORMATTER)
@@ -33,5 +33,10 @@ APP_LOG.addHandler(STREAM_HANDLER)
 APP_LOG.addHandler(FILE_HANDLER)
 APP_LOG.setLevel(logging.DEBUG)
 
-# Передать сообщение обработчику
-APP_LOG.info('Замечательный день для релиза!')
+if __name__ == '__main__':
+    # Передать сообщение обработчику
+    APP_LOG.debug('Отладочная информация')
+    APP_LOG.info('Информационное сообщение')
+    APP_LOG.warning('Предупреждение')
+    APP_LOG.error('Ошибка')
+    APP_LOG.critical('Критическое общение')

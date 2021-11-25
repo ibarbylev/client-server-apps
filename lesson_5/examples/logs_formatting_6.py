@@ -29,4 +29,11 @@ STREAM_HANDLER.setFormatter(FORMATTER)
 LOG.addHandler(STREAM_HANDLER)
 LOG.setLevel(logging.CRITICAL)
 
-LOG.critical('Критическое сообщение')
+if __name__ == '__main__':
+    # Передать сообщение обработчику
+    LOG.debug('Отладочная информация')
+    LOG.info('Информационное сообщение')
+    LOG.warning('Предупреждение')
+    LOG.error('Ошибка')
+    LOG.critical('Критическое общение')
+

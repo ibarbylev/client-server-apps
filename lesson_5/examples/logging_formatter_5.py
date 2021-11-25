@@ -1,5 +1,5 @@
 """
-Журналирование (логгирование) с использованием модуля logging
+Логгирование с использованием модуля logging
 асширенная настройка. Форматирование, обработчики
 """
 
@@ -16,7 +16,7 @@ FILE_HANDLER.setLevel(logging.DEBUG)
 
 # Создать объект Formatter
 # Определить формат сообщений
-FORMATTER = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+FORMATTER = logging.Formatter("%(asctime)s - %(levelname)-8s - %(message)s")
 
 # подключить объект Formatter к обработчику
 FILE_HANDLER.setFormatter(FORMATTER)
@@ -27,6 +27,11 @@ PARAMS = {'host': 'www.python.org', 'port': 80}
 LOG.addHandler(FILE_HANDLER)
 LOG.setLevel(logging.DEBUG)
 
-# Передать сообщение обработчику
-#log.info('Замечательный день для релиза!')
-LOG.info("Параметры подключения: %(host)s, %(port)d", PARAMS)
+
+if __name__ == '__main__':
+    # Передать сообщение обработчику
+    LOG.debug('Отладочная информация')
+    LOG.info('Информационное сообщение')
+    LOG.warning('Предупреждение')
+    LOG.error('Ошибка')
+    LOG.critical('Критическое общение')
