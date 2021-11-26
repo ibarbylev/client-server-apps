@@ -22,12 +22,12 @@ print(f'{WORD:11} #text')
 LOG = logging.getLogger('my_logger')
 STREAM_HANDLER = logging.StreamHandler(sys.stdout)
 
-FORMAT_3 = '%(levelname)-13s #text'
+FORMAT_3 = '%(levelname)-13s #text - %(message)s'
 FORMATTER = logging.Formatter(FORMAT_3)
 STREAM_HANDLER.setFormatter(FORMATTER)
 
 LOG.addHandler(STREAM_HANDLER)
-LOG.setLevel(logging.CRITICAL)
+LOG.setLevel(logging.ERROR)
 
 if __name__ == '__main__':
     # Передать сообщение обработчику

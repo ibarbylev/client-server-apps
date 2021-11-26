@@ -1,6 +1,6 @@
 """
-Логгирование с использованием модуля logging
-асширенная настройка. Форматирование, обработчики
+Логирование с использованием модуля logging
+Расширенная настройка: логирование значений переменных
 """
 
 import logging
@@ -21,8 +21,6 @@ FORMATTER = logging.Formatter("%(asctime)s - %(levelname)-8s - %(message)s")
 # подключить объект Formatter к обработчику
 FILE_HANDLER.setFormatter(FORMATTER)
 
-PARAMS = {'host': 'www.python.org', 'port': 80}
-
 # Добавить обработчик к регистратору
 LOG.addHandler(FILE_HANDLER)
 LOG.setLevel(logging.DEBUG)
@@ -30,8 +28,9 @@ LOG.setLevel(logging.DEBUG)
 
 if __name__ == '__main__':
     # Передать сообщение обработчику
-    LOG.debug('Отладочная информация')
-    LOG.info('Информационное сообщение')
-    LOG.warning('Предупреждение')
-    LOG.error('Ошибка')
-    LOG.critical('Критическое общение')
+    PARAMS = {'host': 'www.python.org', 'port': 80}
+    LOG.debug('Отладочная информация. Параметры подключения: %(host)s, %(port)d', PARAMS)
+    LOG.info('Информационное сообщение. Параметры подключения: %(host)s, %(port)d', PARAMS)
+    LOG.warning('Предупреждение. Параметры подключения: %(host)s, %(port)d', PARAMS)
+    LOG.error(f'Ошибка. Параметры подключения: {PARAMS["host"]},  {PARAMS["port"]}')
+    LOG.critical(f'Критическое общение. Параметры подключения: {PARAMS["host"]},  {PARAMS["port"]}')
