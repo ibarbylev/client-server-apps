@@ -3,8 +3,8 @@
 import sys
 import os
 import logging
-from common.variables import LOGGING_LEVEL
 sys.path.append('../')
+from common.variables import LOGGING_LEVEL
 
 # создаём формировщик логов (formatter):
 CLIENT_FORMATTER = logging.Formatter('%(asctime)s %(levelname)-8s %(filename)s %(message)s')
