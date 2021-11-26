@@ -74,9 +74,9 @@ def main():
         client, client_address = transport.accept()
         SERVER_LOGGER.info(f'Установлено соедение с ПК {client_address}')
         try:
-            message_from_cient = get_message(client)
-            SERVER_LOGGER.debug(f'Получено сообщение {message_from_cient}')
-            response = process_client_message(message_from_cient)
+            message_from_client = get_message(client)
+            SERVER_LOGGER.debug(f'Получено сообщение {message_from_client}')
+            response = process_client_message(message_from_client)
             SERVER_LOGGER.info(f'Сформирован ответ клиенту {response}')
             send_message(client, response)
             SERVER_LOGGER.debug(f'Соединение с клиентом {client_address} закрывается.')

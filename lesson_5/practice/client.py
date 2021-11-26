@@ -90,12 +90,12 @@ def main():
         print(answer)
     except json.JSONDecodeError:
         CLIENT_LOGGER.error('Не удалось декодировать полученную Json строку.')
-    except ReqFieldMissingError as missing_error:
-        CLIENT_LOGGER.error(f'В ответе сервера отсутствует необходимое поле '
-                            f'{missing_error.missing_field}')
     except ConnectionRefusedError:
         CLIENT_LOGGER.critical(f'Не удалось подключиться к серверу {server_address}:{server_port}, '
                                f'конечный компьютер отверг запрос на подключение.')
+    except ReqFieldMissingError as missing_error:
+        CLIENT_LOGGER.error(f'В ответе сервера отсутствует необходимое поле '
+                            f'{missing_error.missing_field}')
 
 
 if __name__ == '__main__':
