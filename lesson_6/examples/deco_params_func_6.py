@@ -33,4 +33,4 @@ def get_wp(url):
     return res
 
 
-# get_wp('https://google.com')
+get_wp('https://google.com')
