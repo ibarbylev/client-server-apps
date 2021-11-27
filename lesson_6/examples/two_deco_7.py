@@ -22,17 +22,16 @@ def my_func():
     return "Какой-то текст"
 
 
-# # порядок выполнения декораторов
-# # сначала make_ext, потом make_int
-# # func = make_ext(make_int(my_func))
-#
-# print(my_func())
-#
-#
-# # def make_ext(func):
-# #     """Первый декоратор"""
-# #     def wrap(*args, **kwargs):
-# #         return "(<ext_tag> " + func() + " </ext_tag>)"
-# #     return wrap
+# порядок выполнения декораторов
+# сначала make_ext, потом make_int
+# func = make_ext(make_int(my_func))
 
-from deco_params_func_6 import decorator
+print(my_func())
+
+
+# def make_ext(func):
+#     """Первый декоратор"""
+#     def wrap(*args, **kwargs):
+#         return "(<ext_tag> " + func() + " </ext_tag>)"
+#     return wrap
+
