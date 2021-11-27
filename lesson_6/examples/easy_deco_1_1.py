@@ -4,6 +4,8 @@
 печатать заданный текст (одинаковый для всех функций)
 -------------------------------------------------------
 Постановка задачи
+(A decorator in Python is any callable object
+that modifies existing functions or classes.)
 """
 
 
