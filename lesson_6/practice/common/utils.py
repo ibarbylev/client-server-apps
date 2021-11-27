@@ -3,9 +3,10 @@
 import json
 import sys
 from common.variables import MAX_PACKAGE_LENGTH, ENCODING
+
+sys.path.append('../')
 from errors import IncorrectDataRecivedError, NonDictInputError
 from decos import log
-sys.path.append('../')
 
 
 @log

@@ -4,8 +4,9 @@ import sys
 import os
 import logging
 import logging.handlers
-from common.variables import LOGGING_LEVEL
+
 sys.path.append('../')
+from common.variables import LOGGING_LEVEL
 
 # создаём формировщик логов (formatter):
 SERVER_FORMATTER = logging.Formatter('%(asctime)s %(levelname)s %(filename)s %(message)s')
