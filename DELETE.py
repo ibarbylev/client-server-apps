@@ -1,9 +1,11 @@
 """Простейший декоратор-класс"""
+import functools
 
 
 class Log:
     """Класс-декоратор"""
     def __init__(self, func):
+        functools.update_wrapper(self, func)
         self.func = func
 
     def __call__(self, *args, **kwargs):
