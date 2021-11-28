@@ -1,21 +1,28 @@
-import functools
+"""Простейший декоратор-класс"""
 
-class CountCalls:
+
+class Log:
+    """Класс-декоратор"""
     def __init__(self, func):
-        # functools.update_wrapper(self, func)
         self.func = func
-        self.num_calls = 0
 
     def __call__(self, *args, **kwargs):
-        self.num_calls += 1
-        print(f"Call {self.num_calls} of {self.func.__name__!r}")
-        return self.func(*args, **kwargs)
-
-@CountCalls
-def say_whee():
-    print("Whee!")
+        """Обертка"""
+        res = self.func(*args, **kwargs)
+        print(f'log: {self.func.__name__}({args}, {kwargs}) = {res}')
+        return res
 
 
-say_whee()
-say_whee()
-say_whee()
+@Log
+def my_func(val_1, val_2):
+    """Вычисление"""
+    return val_1 ** val_2
+
+
+# print('-- Функции с декораторами --')
+# my_func(4, 5)
+
+# другой подход применения декоратора к функции func2 = Log()(func2)
+# func2 = Log()(my_func)
+# func2(4, 5)
+Log(my_func(4, 5))
