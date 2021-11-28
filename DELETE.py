@@ -1,4 +1,10 @@
-"""Простейший декоратор-класс"""
+"""
+Добавить параметр в декоратор класса
+https://stackoverflow.com/questions/7492068/python-class-decorator-arguments
+
+What is the difference between __init__ and __call__?
+https://stackoverflow.com/questions/9663562/what-is-the-difference-between-init-and-call
+"""
 import functools
 
 
@@ -7,6 +13,7 @@ class Log:
     def __init__(self, func):
         functools.update_wrapper(self, func)
         self.func = func
+        self.param = 0
 
     def __call__(self, *args, **kwargs):
         """Обертка"""
