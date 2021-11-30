@@ -10,10 +10,10 @@ class CountCalls:
 
 
 @CountCalls
-def say_whee():
-    print("Whee!")
+def say_hi():
+    print("Hi!")
 
 
-say_whee()
-say_whee()
-say_whee()
+say_hi()
+say_hi()
+say_hi()
