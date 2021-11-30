@@ -33,8 +33,8 @@ some_func()
 
 
 # print('=' * 50)
-# print('Имя функции some_func() в декораторам  @decorator:', some_func.__name__)
-# print('Док-стринг функции some_func() в декораторам  @decorator:', some_func.__doc__)
+# print('Имя функции some_func() c декораторам  @decorator:', some_func.__name__)
+# print('Док-стринг функции some_func() c декораторам  @decorator:', some_func.__doc__)
 
 # Это конечно плохо.
 # Но зато это даёт нам определённые преимущества:

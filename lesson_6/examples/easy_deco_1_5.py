@@ -35,8 +35,8 @@ some_func(1, 2, a=3, b=4)
 
 # ==========================================
 print('=' * 50)
-print('Имя функции some_func() в декораторам  @decorator:', some_func.__name__)
-print('Док-стринг функции some_func() в декораторам  @decorator:', some_func.__doc__)
+print('Имя функции some_func() c декораторам  @decorator:', some_func.__name__)
+print('Док-стринг функции some_func() c декораторам  @decorator:', some_func.__doc__)
 
 
 # ==========================================
