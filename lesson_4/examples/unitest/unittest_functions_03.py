@@ -107,6 +107,14 @@ class TestSumKV(unittest.TestCase):
         with patch.object(sys, 'argv', file_and_args):
             self.assertRaises(IndexError, my_file.my_func)
 
+    @patch.object(sys, 'argv', ['my_file.py', '-p'])
+    def test_with_mock_patch_function_my_func_2(self):
+        """
+        используем функцию assertRaises и unittest.mock.patch
+        для проверки числа аргументов, переданных при запуске файла
+        """
+        self.assertRaises(IndexError, my_file.my_func)
+
     # def test_with_mock_patch_function_get_port_number(self):
     #     """
     #     используем функцию assertRaises и unittest.mock.patch
