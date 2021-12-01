@@ -1,6 +1,9 @@
 """assertEqual"""
+import sys
 
+import my_file
 import unittest
+from unittest.mock import patch
 
 
 def sum_kv_ij(i, j):
@@ -34,72 +37,84 @@ def is_none(val_1):
 
 class TestSumKV(unittest.TestCase):
     """создаем тестовый случай"""
-    def testequal(self):
+
+    def test_equal(self):
         """создаем сам тест"""
 
         # используем функцию assertEqual
         self.assertEqual(sum_kv_ij(2, 3), 13)
 
-    def testnotequal(self):
-
+    def test_not_equal(self):
         """используем функцию assertNotEqual"""
         self.assertNotEqual(sum_kv_ij(2, 3), 10)
 
-    def testtrue(self):
-
+    def test_true(self):
         """используем функцию assertTrue"""
         self.assertTrue(val_compare(10, 3), True)
 
-    def testfalse(self):
-
+    def test_false(self):
         """используем функцию assertTrue"""
         self.assertFalse(val_compare(10, 30), False)
 
-    def testis(self):
-
+    def test_is(self):
         """используем функцию assertIs"""
         self.assertIs(is_compare(Plane(), Plane()), False)
 
-    def testisnot(self):
-
+    def test_is_not(self):
         """используем функцию assertIsNot"""
         self.assertIsNot(is_compare(Plane(), Plane()), True)
 
-    def testisnone(self):
-
+    def test_is_none(self):
         """используем функцию assertIsNone"""
         self.assertIsNone(is_none(None), True)
 
-    def testisnotnone(self):
-
+    def test_is_not_none(self):
         """используем функцию assertIsNotNone"""
         self.assertIsNotNone(is_none("string"), True)
 
-    def testin(self):
-
+    def test_in(self):
         """используем функцию assertIn"""
         self.assertIn(1, [1, 2, 3])
 
-    def testnotin(self):
-
+    def test_not_in(self):
         """используем функцию assertNotIn"""
         self.assertNotIn(4, [1, 2, 3])
 
-    def testisinstance(self):
-
+    def test_isinstance(self):
         """используем функцию assertIsInstance"""
         self.assertIsInstance(Plane(), Plane)
 
-    def testnotisinstance(self):
-
+    def test_not_isinstance(self):
         """используем функцию assertNotIsInstance"""
         self.assertNotIsInstance(Plane(), Car)
 
-    def testraises(self):
-
+    def test_raises_with_with(self):
         """используем функцию assertRaises"""
         with self.assertRaises(ZeroDivisionError):
             1 // 0
+
+    def test_raises_without_with(self):
+        """используем функцию assertRaises"""
+        division_by_zero = lambda x: x / 0
+        self.assertRaises(ZeroDivisionError, division_by_zero, 5)
+
+    def test_with_mock_patch_function_my_func(self):
+        """
+        используем функцию assertRaises и unittest.mock.patch
+        для проверки числа аргументов, переданных при запуске файла
+        """
+        file_and_args = ['my_file.py', '-p']
+        with patch.object(sys, 'argv', file_and_args):
+            self.assertRaises(IndexError, my_file.my_func)
+
+    # def test_with_mock_patch_function_get_port_number(self):
+    #     """
+    #     используем функцию assertRaises и unittest.mock.patch
+    #     для проверки числа аргументов, переданных при запуске файла
+    #     """
+    #     file_and_args = ['my_file.py', '-p']
+    #     with patch.object(sys, 'argv', file_and_args):
+    #         self.assertRaises(IndexError, my_file.get_port_number)
 
 
 if __name__ == '__main__':
