@@ -47,7 +47,7 @@ class BasicClassSlots:
 bc_slots = BasicClassSlots(5, 6)
 print(bc_slots.__slots__)
 print(asizeof.asizeof(bc_slots))
-# BCS_OBJ.param_z = 7
+# bc_slots.z = 7
 # print(bs_slots_object.__dict__)
 
 
@@ -61,7 +61,22 @@ print(timeit(bc_slots.calc))
 
 print('=' * 80)
 """
-4.) In the case of using __slots__, we cannot add an instance attribute of the class, 
+4.) We cannot add attributes to an instance of a class, but we can remove them.
+"""
+del bc_slots.x
+try:
+    print(bc_slots.x)
+except AttributeError as e:
+    print(e.__class__, ":  x attribute does not exist!")
+
+""" And then add it again. """
+bc_slots.x = 5
+print('bc_slots.x = ', bc_slots.x)
+
+print('=' * 80)
+
+"""
+5.) In the case of using __slots__, we cannot add an instance attribute of the class, 
     but we can add a class attribute.
 """
 
