@@ -5,12 +5,13 @@
 
 import time
 import select
-from socket import socket, AF_INET, SOCK_STREAM
+from socket import socket, AF_INET, SOCK_STREAM, SOL_SOCKET, SO_REUSEADDR
 
 
 def new_listen_socket(address):
     """Инициируем серверный сокет"""
     sock = socket(AF_INET, SOCK_STREAM)
+    sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
     sock.bind(address)
     sock.listen(5)
     # проверяем есть ли новые клиенты
