@@ -6,17 +6,17 @@ SERV_SOCK = socket(AF_INET, SOCK_STREAM)
 SERV_SOCK.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 SERV_SOCK.bind(('', 8007))
 SERV_SOCK.listen(1)
-DATA_SOCK = []
+SOCKETS = []
 
 try:
     while True:
         CLIENT_S, ADDR = SERV_SOCK.accept()
-        DATA_SOCK.append(CLIENT_S)
-        for CLIENT_SOCK in DATA_SOCK:
+        SOCKETS.append(CLIENT_S)
+        for CLIENT_SOCK in SOCKETS:
             DATA = CLIENT_SOCK.recv(4096)
             if DATA == b'exit':
                 # find CLIENT_SOCK and remove from DATA
-                DATA_SOCK.remove(CLIENT_SOCK)
+                SOCKETS.remove(CLIENT_SOCK)
                 CLIENT_SOCK.close()
             print(f"Сообщение: {DATA.decode('utf-8')} было отправлено клиентом: {ADDR})")
             MSG = 'Привет, клиент'

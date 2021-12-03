@@ -58,6 +58,7 @@ def mainloop():
                     print(e)
                     # клиент отключился
                     all_clients.remove(client)
+                    client.close()
 
 
 print('Эхо-сервер запущен!')

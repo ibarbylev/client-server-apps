@@ -8,6 +8,7 @@ import os
 import signal
 import subprocess
 import sys
+import time
 from time import sleep
 
 
@@ -32,8 +33,8 @@ while True:
         break
     elif USER == "s":
 
-        # P_LIST.append(get_subprocess("time_server_select.py"))
-
+        P_LIST.append(get_subprocess("time_server_select.py"))
+        time.sleep(0.2)
         for i in range(CLIENTS_COUNT):
             P_LIST.append(get_subprocess("time_client_random.py"))
 
