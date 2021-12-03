@@ -1,6 +1,6 @@
 """Программа клиента, отправляющего/читающего простые текстовые сообщения на сервер"""
 
-from socket import socket, AF_INET, SOCK_STREAM, SHUT_RDWR
+from socket import socket, AF_INET, SOCK_STREAM
 
 ADDRESS = ('localhost', 10000)
 

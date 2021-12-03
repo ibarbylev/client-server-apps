@@ -34,14 +34,15 @@ def write_responses(requests, clients_write, all_clients):
                 if requests[sock] == '':
                     raise Exception
                 resp = requests[sock].upper()
-                #print(resp)
+                print(resp)
                 sock.send(resp.encode('utf-8'))
-            except Exception:
+            except Exception as e:
+                print(e)
                 # sock.fileno() - вернуть дескриптор файла сокетов (небольшое целое число)
                 # sock.getpeername() - получить IP-адрес и номер порта клиента
                 print(f"Клиент {sock.fileno()} {sock.getpeername()} отключился")
-                sock.close()
                 all_clients.remove(sock)
+                sock.close()
 
 
 def mainloop():
@@ -51,7 +52,6 @@ def mainloop():
     all_clients = []
 
     with socket(AF_INET, SOCK_STREAM) as sock:
-        # sock = socket(AF_INET, SOCK_STREAM)
         sock.bind(address)
         sock.listen(5)
         sock.settimeout(1)
