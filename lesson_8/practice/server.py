@@ -129,7 +129,7 @@ def main():
     messages = []
 
     # Словарь, содержащий имена пользователей и соответствующие им сокеты.
-    names = dict()
+    names = dict()  # {client_name: client_socket}
 
     # Слушаем порт
     transport.listen(MAX_CONNECTIONS)
