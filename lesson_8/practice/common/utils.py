@@ -5,7 +5,6 @@ import json
 from common.variables import MAX_PACKAGE_LENGTH, ENCODING
 from errors import IncorrectDataRecivedError, NonDictInputError
 from decos import log
-sys.path.append('../')
 
 
 @log
