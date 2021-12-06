@@ -74,7 +74,8 @@ def create_message(sock, account_name='Guest'):
     try:
         send_message(sock, message_dict)
         LOGGER.info(f'Отправлено сообщение для пользователя {to_user}')
-    except:
+    except Exception as e:
+        print(e)
         LOGGER.critical('Потеряно соединение с сервером.')
         sys.exit(1)
 
@@ -126,7 +127,7 @@ def print_help():
 def process_response_ans(message):
     """
     Функция разбирает ответ сервера на сообщение о присутствии,
-    возращает 200 если все ОК или генерирует исключение при ошибке
+    возвращает 200 если все ОК или генерирует исключение при ошибке
     :param message:
     :return:
     """
@@ -173,7 +174,7 @@ def main():
         client_name = input('Введите имя пользователя: ')
 
     LOGGER.info(
-        f'Запущен клиент с парамертами: адрес сервера: {server_address}, '
+        f'Запущен клиент с параметрами: адрес сервера: {server_address}, '
         f'порт: {server_port}, имя пользователя: {client_name}')
 
     # Инициализация сокета и сообщение серверу о нашем появлении
@@ -200,7 +201,7 @@ def main():
         sys.exit(1)
     else:
         # Если соединение с сервером установлено корректно,
-        # запускаем клиенский процесс приёма сообщний
+        # запускаем клиентский процесс приёма сообщений
         receiver = threading.Thread(target=message_from_server, args=(transport, client_name))
         receiver.daemon = True
         receiver.start()

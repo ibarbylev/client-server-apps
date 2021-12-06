@@ -97,7 +97,7 @@ def arg_parser():
     listen_address = namespace.a
     listen_port = namespace.p
 
-    # проверка получения корретного номера порта для работы сервера.
+    # проверка получения корректного номера порта для работы сервера.
     if not 1023 < listen_port < 65536:
         LOGGER.critical(
             f'Попытка запуска сервера с указанием неподходящего порта {listen_port}. '
@@ -120,6 +120,7 @@ def main():
         f'Если адрес не указан, принимаются соединения с любых адресов.')
     # Готовим сокет
     transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    transport.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     transport.bind((listen_address, listen_port))
     transport.settimeout(0.5)
 
