@@ -41,7 +41,7 @@ def producer(sequence_obj, input_pipe):
 
 
 if __name__ == '__main__':
-    # output_p, input_p - кортеж (концы канала)
+    # output_p, input_p - тюпл (концы канала)
     OUTPUT_P, INPUT_P = multiprocessing.Pipe()
     # Запустить процесс-потребитель
     CONS_P = multiprocessing.Process(target=consumer, args=((OUTPUT_P, INPUT_P), ))
