@@ -27,8 +27,8 @@ def writer(mes, event_for_wait, event_for_set):
 
 # определяем объекты-события
 # это объекты-наблюдатели
-EVENT_1 = threading.Event()
-EVENT_2 = threading.Event()
+EVENT_1 = threading.Event()  # по умолчанию == False
+EVENT_2 = threading.Event()  # по умолчанию == False
 
 # определяем потоки
 # в каждом потоке запускаем на выполнение ф-цию writer
