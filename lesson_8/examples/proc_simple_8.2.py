@@ -12,6 +12,7 @@ def clock(interval):
     """Простая функция"""
     while True:
         time.sleep(interval)
+        print(interval)
         print(f"The time is {time.ctime()}")
         break
 
@@ -23,6 +24,7 @@ if __name__ == "__main__":
     # PROC.join()
     print(f"The time of main process is {time.ctime()}")
     time.sleep(4)
+    print(4)
     print(f"The time of main process is {time.ctime()}")
 
 # Основной и дополнительный процесс запускаются вместе

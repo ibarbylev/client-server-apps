@@ -12,6 +12,7 @@ def clock(interval):
     """Простая функция"""
     while True:
         time.sleep(interval)
+        print(interval)
         print(f"The time is {time.ctime()}")
         break
 
