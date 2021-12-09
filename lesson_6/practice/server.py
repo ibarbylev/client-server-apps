@@ -9,9 +9,9 @@ import logs.config_server_log
 from errors import IncorrectDataRecivedError
 from common.variables import ACTION, USER, ACCOUNT_NAME, PRESENCE, \
     TIME, DEFAULT_PORT, MAX_CONNECTIONS, RESPONSE, ERROR
-from common.utils import get_message, send_message
+# from common.utils import get_message, send_message
+from common.utils_for_log_as_class import get_message, send_message
 from decos import log
-
 
 # Инициализация логирования сервера.
 LOGGER = logging.getLogger('server')
@@ -62,6 +62,7 @@ def main():
     # Готовим сокет
 
     transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    transport.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     transport.bind((listen_address, listen_port))
 
     # Слушаем порт

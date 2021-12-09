@@ -10,6 +10,7 @@ import logs.config_client_log
 from common.variables import ACTION, TIME, USER, ACCOUNT_NAME, RESPONSE, \
     DEFAULT_IP_ADDRESS, DEFAULT_PORT, ERROR, PRESENCE
 from common.utils import get_message, send_message
+# from common.utils_for_log_as_class import get_message, send_message
 from errors import ReqFieldMissingError
 from decos import log
 
