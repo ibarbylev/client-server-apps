@@ -2,7 +2,9 @@
 Пример логера-декоратора, созданного с помощью класса, в котором
 настроен дополнительный фильтр, а именно:
 пишем только те логи, где в сообщении есть слово "фУнкция"
-Более подробно: https://stackoverflow.com/questions/879732/logging-with-filters
+Более подробно: 
+добавление фильтра: https://stackoverflow.com/questions/879732/logging-with-filters
+удаление фильтра: https://stackoverflow.com/questions/59314525/how-to-remove-a-log-filter-formatter
 """
 
 

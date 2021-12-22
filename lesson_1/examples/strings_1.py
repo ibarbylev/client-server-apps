@@ -11,11 +11,11 @@ print(SECOND_STR)
 
 print('----------------------------------------------------')
 # форматы записи юникод-символов
-FIRST_SYMB = '\N{LATIN SMALL LETTER C WITH DOT ABOVE}'
-print(FIRST_SYMB)
+FIRST_SYMBOL = '\N{LATIN SMALL LETTER C WITH DOT ABOVE}'
+print(FIRST_SYMBOL)
 
-SECOND_SYMB = '\u010B'
-print(SECOND_SYMB)
+SECOND_SYMBOL = '\u010B'
+print(SECOND_SYMBOL)
 
 print('----------------------------------------------------')
 # строка, как последовательность юникод-символов
@@ -30,14 +30,22 @@ print(len(SECOND_WORD))
 
 print('----------------------------------------------------')
 # 1 конвертор теста в unicode: https://calcsbox.com/post/konverter-teksta-v-unikod.html
-# 2 получение кодовых точек с помощью юникод-эскапирования
+# 2 получение кодовых точек для НЕ ascii-символов с помощью unicode_escape
 text = 'Привет!'.encode('unicode_escape')
 print(type(text))
-print(text)
+print("'Привет!'.encode('unicode_escape'): ", text)
+
+# ВАЖНО для домашнего задания!!!
+# Вариант 2 не является заменой варианта 1!!!!
 
 print('----------------------------------------------------')
-# функция ord позволяет получить числовое значение юникод-символа
-print(ord('ã'))
+# функция ord позволяет получить числовое значение символа
+# в десятичном виде
+decimal_code = ord('ã')
+print(decimal_code)  # 227
 
-# ункция chr позволяет получить символ по коду
+# это косвенный способ определить принадлежность символа к ascii-коду:
+# если ord(x) > 127, значит это не ascii-символ!
+
+# функция chr позволяет получить символ по коду
 print(chr(227))
