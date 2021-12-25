@@ -1,12 +1,18 @@
 """
-1. Каждое из слов «разработка», «сокет», «декоратор» представить
-в строковом формате и проверить тип и содержание соответствующих переменных.
+1. Каждое из слов «разработка», «сокет», «декоратор» представить в строковом
+формате и проверить тип и содержание соответствующих переменных.
 Затем с помощью онлайн-конвертера преобразовать строковые представление
 в формат Unicode и также проверить тип и содержимое переменных.
 """
 
 
-def print_value_and_type(items: list):
+def print_value_and_type(items: list) -> None:
+    """
+    The function prints the values and type of each item in
+    the list (the list is an argument to the function).
+    :param items:
+    :return: None
+    """
     for item in items:
         print(item)
         print(type(item))

@@ -1,17 +1,17 @@
 """
-5. Выполнить пинг веб-ресурсов yandex.ru, youtube.com и
-преобразовать результаты из байтовового в строковый тип на кириллице.
+5. Выполнить пинг веб-ресурсов yandex.ru, youtube.com и преобразовать результаты
+из байтового в строковый (предварительно определив кодировку выводимых сообщений).
 """
 
 import platform
 import subprocess
 from chardet import detect
 
-URLS = ['yandex.ru', 'youtube.com']
-CODE = '-n' if platform.system() == 'Windows' else '-c'
+urls = ['yandex.ru', 'youtube.com']
+code = '-n' if platform.system().lower() == 'windows' else '-c'
 
-for url in URLS:
-    args = ['ping', CODE, '4', url]
+for url in urls:
+    args = ['ping', code, '4', url]
     YA_PING = subprocess.Popen(args, stdout=subprocess.PIPE)
     for line in YA_PING.stdout:
         result = detect(line)
