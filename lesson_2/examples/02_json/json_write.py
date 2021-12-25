@@ -1,6 +1,7 @@
 """Модуль json_write"""
 
 import json
+from pprint import pprint
 
 DICT_TO_JSON = {
     "action": "msg",
@@ -12,10 +13,13 @@ DICT_TO_JSON = {
 
 print('----- преобразование python-объекта (словаря) в строку в формате json -----')
 with open('mes_example_write_1.json', 'w', encoding='utf-8') as f_n:
-    f_n.write(json.dumps(DICT_TO_JSON))
+    dict_as_string = json.dumps(DICT_TO_JSON)
+    print('type(dict_as_string)', type(dict_as_string))
+    f_n.write(dict_as_string)
 
 with open('mes_example_write_1.json') as f_n:
-    print(f_n.read())
+    OBJ = json.load(f_n)
+    pprint(OBJ)
 
 print()
 print('----- запись python-объекта в файл в формате json -----')
@@ -31,7 +35,8 @@ with open('mes_example_write_3.json', 'w', encoding='utf-8') as f_n:
     json.dump(DICT_TO_JSON, f_n, sort_keys=True, indent=4)
 
 with open('mes_example_write_3.json') as f_n:
-    print(f_n.read())
+    OBJ = json.load(f_n)
+    pprint(OBJ)
 
 print()
 print('----- запись символов вместо записи кодовых точек -----')

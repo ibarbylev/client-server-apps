@@ -13,9 +13,6 @@ with open('mes_example_read.json', encoding='utf-8') as f_n:
 
 print(f'==> {type(f_n)} ==> json.load() ==> {type(OBJ)} ==>')
 
-for section, commands in OBJ.items():
-    print(f'{section}, {commands}')
-
 print()
 print('----- использование метода loads для чтения json-файла, как строки -----')
 print('----- преобразуем json-строку в python-объект (словарь) -----')
@@ -28,7 +25,6 @@ with open('mes_example_read.json', encoding='utf-8') as f_n:
 
 print(f'==> {type(f_n)} ==> {type(F_N_CONTENT)} ==> json.loads() ==> {type(OBJ)} ==>')
 
-for section, commands in OBJ.items():
-    print(f'{section}, {commands}')
-
+print()
+pprint(OBJ)
 
