@@ -1,6 +1,7 @@
 """ Module csv_read """
 
 import csv
+from pprint import pprint
 
 print('----- Простое чтение из файла kp_data.csv ------')
 print('----- Получаем итератор объекта ------')
@@ -21,7 +22,8 @@ print()
 print('----- Преобразование итератора в список ------')
 with open('kp_data.csv', encoding='utf-8') as f_n:
     F_N_READER = csv.reader(f_n)
-    print(list(F_N_READER))
+    print(type(F_N_READER))
+    pprint(list(F_N_READER))
 
 
 print()
