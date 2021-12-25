@@ -1,7 +1,12 @@
-"""Модуль pyyaml_examples"""
+"""
+Модуль pyyaml_examples
 
-# Attention!!! Need to install!
-# a pip install pyyaml
+Attention!!! Need to install!
+
+pip install pyyaml
+"""
+
+
 import yaml
 
 # считываем данные
@@ -21,6 +26,7 @@ with open('data_write.yaml', 'w', encoding='utf-8') as f_n:
 
 with open('data_write.yaml', encoding='utf-8') as f_n:
     F_N_CONTENT = yaml.load(f_n, Loader=yaml.FullLoader)
+    print('type(F_N_CONTENT)', type(F_N_CONTENT))
     print(F_N_CONTENT)
 
 """
