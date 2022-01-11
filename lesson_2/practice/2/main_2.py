@@ -33,8 +33,8 @@ def write_order_to_json(item, quantity, price, buyer, date):
 
 
 # initialisation (чтобы не удалять данные при каждой новой проверке скрипта)
-with open('orders_2.json', 'w', encoding='utf-8') as f_in:
-    json.dump({'orders': []}, f_in, indent=4)
+# with open('orders_2.json', 'w', encoding='utf-8') as f_in:
+#     json.dump({'orders': []}, f_in, indent=4)
 
 
 write_order_to_json('принтер', '10', '6700', 'Ivanov I.I.', '24.09.2017')

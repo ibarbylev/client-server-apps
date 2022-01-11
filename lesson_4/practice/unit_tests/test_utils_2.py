@@ -46,9 +46,11 @@ class TestUtils(unittest.TestCase):
         # Создаем тестовый сокет для клиента
         self.client_socket = socket(AF_INET, SOCK_STREAM)
         self.client_socket.connect((DEFAULT_IP_ADDRESS, DEFAULT_PORT))
+        self.client, self.client_address = self.server_socket.accept()
 
     def tearDown(self) -> None:
         # Закрываем созданные сокеты
+        self.client.close()
         self.client_socket.close()
         self.server_socket.close()
 
@@ -62,13 +64,13 @@ class TestUtils(unittest.TestCase):
         """
         Проверяем отправку корректного сообщения
         """
-        client, client_address = self.server_socket.accept()
+
         # Отправляем сообщение
         send_message(self.client_socket, self.test_message)
         # Получаем и раскодируем сообщение
-        test_response = client.recv(MAX_PACKAGE_LENGTH)
+        test_response = self.client.recv(MAX_PACKAGE_LENGTH)
         test_response = json.loads(test_response.decode(ENCODING))
-        client.close()
+        self.client.close()
         # Проверяем соответствие изначального сообщения и прошедшего отправку
         self.assertEqual(self.test_message, test_response)
 
@@ -77,10 +79,9 @@ class TestUtils(unittest.TestCase):
         Корректрая расшифровка коректного словаря
         """
         # Отправляем клиенту тестовый ответ о корректной отправке данных
-        client, client_address = self.server_socket.accept()
         message = json.dumps(self.test_correct_response)
-        client.send(message.encode(ENCODING))
-        client.close()
+        self.client.send(message.encode(ENCODING))
+        self.client.close()
         # получаем ответ
         response = get_message(self.client_socket)
         # сравниваем отправленный и полученный ответ
@@ -91,10 +92,9 @@ class TestUtils(unittest.TestCase):
         Корректрая расшифровка ошибочного словаря
         """
         # Отправляем клиенту тестовый ответ об ошибке
-        client, client_address = self.server_socket.accept()
         message = json.dumps(self.test_error_response)
-        client.send(message.encode(ENCODING))
-        client.close()
+        self.client.send(message.encode(ENCODING))
+        self.client.close()
         # получаем ответ
         response = get_message(self.client_socket)
         # сравниваем отправленный и полученный ответ
@@ -104,11 +104,10 @@ class TestUtils(unittest.TestCase):
         """
         Проверяем возникновение ошибки, если пришедший объект не словарь
         """
-        client, client_address = self.server_socket.accept()
         # Отправляем клиенту строку, вместо словаря
         message = json.dumps('not dict')
-        client.send(message.encode(ENCODING))
-        client.close()
+        self.client.send(message.encode(ENCODING))
+        self.client.close()
 
         self.assertRaises(ValueError, get_message, self.client_socket)
 
@@ -116,10 +115,9 @@ class TestUtils(unittest.TestCase):
         """
         Проверяет является ли возвращаемый объект словарем
         """
-        client, client_address = self.server_socket.accept()
         message = json.dumps(self.test_correct_response)
-        client.send(message.encode(ENCODING))
-        client.close()
+        self.client.send(message.encode(ENCODING))
+        self.client.close()
 
         self.assertIsInstance(get_message(self.client_socket), dict)
 

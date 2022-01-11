@@ -48,6 +48,6 @@ def write_order_to_json(item: str, quantity: str, price: str, buyer: str, date: 
 # Вот здесь важный момент. С латиницей все хорошо. Но стоит указать строку с кириллицей
 # и в json-файле получим
 # "item": "\u043f\u0440\u0438\u043d\u0442\u0435\u0440",
-write_order_to_json('printer', '10', '6700', 'Ivanov I.I.', '24.09.2017')
+write_order_to_json('printer', '10', '6700', 'Иванов I.I.', '24.09.2017')
 write_order_to_json('scaner', '20', '10000', 'Petrov P.P.', '11.01.2018')
 write_order_to_json('computer', '5', '40000', 'Sidorov S.S.', '2.05.2019')
