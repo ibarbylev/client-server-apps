@@ -1,19 +1,19 @@
 import unittest
 
 
-def split(line, types=None, delimiter=None):
+def super_split(line, types=None, delimiter=' '):
     """ Разбивает текстовую строку и при необходимости
         выполняет преобразование типов.
         Например:
-        >>> split('GOOG 100 490.50')
+        >>> super_split('GOOG 100 490.50')
         ['GOOG', '100', '490.50']
-        >>> split('GOOG 100 490.50', [str, int, float])
+        >>> super_split('GOOG 100 490.50', [str, int, float])
         ['GOOG', 100, 490.5]
         >>>
         По умолчанию разбиение производится по пробельным символам,
         но имеется возможность указать другой символ-разделитель, в виде именованного аргумента:
 
-        >>> split('GOOG,100,490.50', delimiter=',')
+        >>> super_split('GOOG,100,490.50', delimiter=',')
         ['GOOG', '100', '490.50']
         >>>
     """
@@ -34,16 +34,16 @@ class TestSplitFunction(unittest.TestCase):
         # Выполнить завершающие действия (если необходимо)
         pass
 
-    def testsimplestring(self):
-        r = split('GOOG 100 490.50')
+    def test_simple_string(self):
+        r = super_split('GOOG 100 490.50')
         self.assertEqual(r, ['GOOG', '100', '490.50'])
 
-    def testtypeconvert(self):
-        r = split('GOOG 100 490.50', [str, int, float])
+    def test_type_convert(self):
+        r = super_split('GOOG 100 490.50', [str, int, float])
         self.assertEqual(r, ['GOOG', 100, 490.5])
 
-    def testdelimiter(self):
-        r = split('GOOG,100,490.50', delimiter=',')
+    def test_delimiter(self):
+        r = super_split('GOOG,100,490.50', delimiter=',')
         self.assertEqual(r, ['GOOG', '100', '490.50'])
 
 
