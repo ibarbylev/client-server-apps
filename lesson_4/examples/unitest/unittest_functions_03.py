@@ -6,9 +6,9 @@ import unittest
 from unittest.mock import patch
 
 
-def sum_kv_ij(i, j):
+def sum_of_squares(i, j):
     """Сумма квадратов"""
-    return i * i + j * j
+    return i ** 2 + j ** 2
 
 
 def val_compare(val_1, val_2):
@@ -42,11 +42,11 @@ class TestSumKV(unittest.TestCase):
         """создаем сам тест"""
 
         # используем функцию assertEqual
-        self.assertEqual(sum_kv_ij(2, 3), 13)
+        self.assertEqual(sum_of_squares(2, 3), 13)
 
     def test_not_equal(self):
         """используем функцию assertNotEqual"""
-        self.assertNotEqual(sum_kv_ij(2, 3), 10)
+        self.assertNotEqual(sum_of_squares(2, 3), 10)
 
     def test_true(self):
         """используем функцию assertTrue"""
@@ -98,7 +98,15 @@ class TestSumKV(unittest.TestCase):
         division_by_zero = lambda x: x / 0
         self.assertRaises(ZeroDivisionError, division_by_zero, 5)
 
+    @patch.object(sys, 'argv', ['my_file.py', '-p'])   # sys.argv = ['my_file.py', '-p']
     def test_with_mock_patch_function_my_func_false_var1(self):
+        """
+        Используем функцию assertRaises и unittest.mock.patch
+        для проверки числа аргументов, переданных при запуске файла
+        """
+        self.assertRaises(IndexError, my_file.my_func)
+
+    def test_with_mock_patch_function_my_func_false_var2(self):
         """
         Используем функцию assertRaises и unittest.mock.patch
         для проверки числа аргументов, переданных при запуске файла
@@ -106,14 +114,6 @@ class TestSumKV(unittest.TestCase):
         file_and_args = ['my_file.py', '-p']
         with patch.object(sys, 'argv', file_and_args):
             self.assertRaises(IndexError, my_file.my_func)
-
-    @patch.object(sys, 'argv', ['my_file.py', '-p'])
-    def test_with_mock_patch_function_my_func_false_var2(self):
-        """
-        Используем функцию assertRaises и unittest.mock.patch
-        для проверки числа аргументов, переданных при запуске файла
-        """
-        self.assertRaises(IndexError, my_file.my_func)
 
     @patch.object(sys, 'argv', ['my_file.py', '-p', 7777])
     def test_with_mock_patch_function_my_func_true(self):
