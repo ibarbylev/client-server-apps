@@ -98,9 +98,9 @@ class TestSumKV(unittest.TestCase):
         division_by_zero = lambda x: x / 0
         self.assertRaises(ZeroDivisionError, division_by_zero, 5)
 
-    def test_with_mock_patch_function_my_func(self):
+    def test_with_mock_patch_function_my_func_false_var1(self):
         """
-        используем функцию assertRaises и unittest.mock.patch
+        Используем функцию assertRaises и unittest.mock.patch
         для проверки числа аргументов, переданных при запуске файла
         """
         file_and_args = ['my_file.py', '-p']
@@ -108,21 +108,38 @@ class TestSumKV(unittest.TestCase):
             self.assertRaises(IndexError, my_file.my_func)
 
     @patch.object(sys, 'argv', ['my_file.py', '-p'])
-    def test_with_mock_patch_function_my_func_2(self):
+    def test_with_mock_patch_function_my_func_false_var2(self):
         """
-        используем функцию assertRaises и unittest.mock.patch
+        Используем функцию assertRaises и unittest.mock.patch
         для проверки числа аргументов, переданных при запуске файла
         """
         self.assertRaises(IndexError, my_file.my_func)
 
-    # def test_with_mock_patch_function_get_port_number(self):
-    #     """
-    #     используем функцию assertRaises и unittest.mock.patch
-    #     для проверки числа аргументов, переданных при запуске файла
-    #     """
-    #     file_and_args = ['my_file.py', '-p']
-    #     with patch.object(sys, 'argv', file_and_args):
-    #         self.assertRaises(IndexError, my_file.get_port_number)
+    @patch.object(sys, 'argv', ['my_file.py', '-p', 7777])
+    def test_with_mock_patch_function_my_func_true(self):
+        """
+        Используем функцию assertRaises и unittest.mock.patch
+        для проверки числа аргументов, переданных при запуске файла
+        """
+        self.assertEqual(None, my_file.my_func())
+
+    def test_with_mock_patch_function_get_port_number_false(self):
+        """
+        Используем функцию assertRaises и unittest.mock.patch
+        для проверки числа аргументов, переданных при запуске файла
+        """
+        file_and_args = ['my_file.py', '-p']
+        with patch.object(sys, 'argv', file_and_args):
+            self.assertRaises(IndexError, my_file.get_port_number)
+
+    def test_with_mock_patch_function_get_port_number_true(self):
+        """
+        Используем функцию assertRaises и unittest.mock.patch
+        для проверки числа аргументов, переданных при запуске файла
+        """
+        file_and_args = ['my_file.py', '-p', 7777]
+        with patch.object(sys, 'argv', file_and_args):
+            self.assertEqual(7777, my_file.get_port_number())
 
 
 if __name__ == '__main__':
