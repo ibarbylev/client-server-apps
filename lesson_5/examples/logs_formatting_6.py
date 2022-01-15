@@ -18,22 +18,22 @@ len(WORD)
 print('{:9} #text'.format(WORD))
 print(f'{WORD:11} #text')
 
-# Создать логгер и сравнить функцию format() и конструктор Formatter()
-LOG = logging.getLogger('my_logger')
-STREAM_HANDLER = logging.StreamHandler(sys.stdout)
+# Создать логер и сравнить функцию format() и конструктор Formatter()
+log = logging.getLogger('my_logger')
+stream_hand = logging.StreamHandler(sys.stdout)
 
 FORMAT_3 = '%(levelname)-13s #text - %(message)s'
-FORMATTER = logging.Formatter(FORMAT_3)
-STREAM_HANDLER.setFormatter(FORMATTER)
+formatter = logging.Formatter(FORMAT_3)
+stream_hand.setFormatter(formatter)
 
-LOG.addHandler(STREAM_HANDLER)
-LOG.setLevel(logging.ERROR)
+log.addHandler(stream_hand)
+log.setLevel(logging.ERROR)
 
 if __name__ == '__main__':
     # Передать сообщение обработчику
-    LOG.debug('Отладочная информация')
-    LOG.info('Информационное сообщение')
-    LOG.warning('Предупреждение')
-    LOG.error('Ошибка')
-    LOG.critical('Критическое общение')
+    log.debug('Отладочная информация')
+    log.info('Информационное сообщение')
+    log.warning('Предупреждение')
+    log.error('Ошибка')
+    log.critical('Критическое общение')
 

@@ -5,32 +5,32 @@
 
 import logging
 
-# Создать логгер - регистратор верхнего уроовня
+# Создать логер - регистратор верхнего уровня
 # с именем app.main
-LOG = logging.getLogger('app')
+log = logging.getLogger('app')
 
 # Создать обработчик
-FILE_HANDLER = logging.FileHandler("app_2.log", encoding='utf-8')
+file_hand = logging.FileHandler("app_2.log", encoding='utf-8')
 # выводит сообщения с уровнем DEBUG
-FILE_HANDLER.setLevel(logging.DEBUG)
+file_hand.setLevel(logging.DEBUG)
 
-# Создать объект Formatter
-# Определить формат сообщений
-FORMATTER = logging.Formatter("%(asctime)s - %(levelname)-8s - %(message)s")
+# Создать объект formatter и задать формат сообщений
+formatter = logging.Formatter("%(asctime)s - %(levelname)-8s - %(message)s")
 
 # подключить объект Formatter к обработчику
-FILE_HANDLER.setFormatter(FORMATTER)
+file_hand.setFormatter(formatter)
 
 # Добавить обработчик к регистратору
-LOG.addHandler(FILE_HANDLER)
-LOG.setLevel(logging.DEBUG)
+log.addHandler(file_hand)
+log.setLevel(logging.DEBUG)
 
 
 if __name__ == '__main__':
     # Передать сообщение обработчику
     PARAMS = {'host': 'www.python.org', 'port': 80}
-    LOG.debug('Отладочная информация. Параметры подключения: %(host)s, %(port)d', PARAMS)
-    LOG.info('Информационное сообщение. Параметры подключения: %(host)s, %(port)d', PARAMS)
-    LOG.warning('Предупреждение. Параметры подключения: %(host)s, %(port)d', PARAMS)
-    LOG.error(f'Ошибка. Параметры подключения: {PARAMS["host"]},  {PARAMS["port"]}')
-    LOG.critical(f'Критическое общение. Параметры подключения: {PARAMS["host"]},  {PARAMS["port"]}')
+    log.debug('Отладочная информация. Параметры подключения: %(host)s, %(port)d', PARAMS)
+    log.info('Информационное сообщение. Параметры подключения: %(host)s, %(port)d', PARAMS)
+    log.warning('Предупреждение. Параметры подключения: %(host)s, %(port)d', PARAMS)
+    log.error(f'Ошибка. Параметры подключения: {PARAMS["host"]},  {PARAMS["port"]}')
+    log.critical(f'Критическое общение. Параметры подключения: '
+                 f'{PARAMS["host"]},  {PARAMS["port"]}')
