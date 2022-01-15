@@ -7,10 +7,14 @@ import logging
 
 # Создать логер - регистратор верхнего уровня
 # с именем app.main
+import os
+
 log = logging.getLogger('app.main')
 
 # Создать обработчик
-file_hand = logging.FileHandler("app.log", encoding='utf-8')
+PATH = os.path.dirname(os.path.abspath(__file__))
+PATH = os.path.join(PATH, 'app.log')
+file_hand = logging.FileHandler(PATH, encoding='utf-8')
 # выводит сообщения с уровнем DEBUG
 file_hand.setLevel(logging.DEBUG)
 
