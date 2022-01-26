@@ -9,8 +9,8 @@ import logs.config_server_log
 from errors import IncorrectDataRecivedError
 from common.variables import ACTION, USER, ACCOUNT_NAME, PRESENCE, \
     TIME, DEFAULT_PORT, MAX_CONNECTIONS, RESPONSE, ERROR
-# from common.utils import get_message, send_message
-from common.utils_for_log_as_class import get_message, send_message
+from common.utils import get_message, send_message
+# from common.utils_for_log_as_class import get_message, send_message
 from decos import log
 
 # Инициализация логирования сервера.
