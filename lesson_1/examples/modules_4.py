@@ -2,7 +2,7 @@
 Модуль subprocess
 """
 
-import chardet   # необходима предварительная инсталляция!
+import chardet   # необходима предварительная инсталляция: pip install chardet
 import subprocess
 import platform
 
@@ -12,6 +12,7 @@ args = ['ping', param, '2', 'yandex.ru']
 result = subprocess.Popen(args, stdout=subprocess.PIPE)
 for line in result.stdout:
     result = chardet.detect(line)
+    print('result = ', result)
     line = line.decode(result['encoding']).encode('utf-8')
     print(line.decode('utf-8'))
 
