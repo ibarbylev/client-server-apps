@@ -29,14 +29,23 @@ print(FIRST_WORD == SECOND_WORD)
 print(len(SECOND_WORD))
 
 print('----------------------------------------------------')
+
 # 1 конвертор теста в unicode: https://calcsbox.com/post/konverter-teksta-v-unikod.html
-# 2 получение кодовых точек для НЕ ascii-символов с помощью unicode_escape
+
+# 2 получение кодовой точки путём преобразования десятичного значение символа в шестнадцатеричный
+# подробнее здесь:
+# https://stackoverflow.com/questions/48556741/what-refers-to-04x-in-python-unicode-characteristics
+
+code_point = rf"\u{'%04x' % ord('€')}"
+print('Кодовая точка символа евро (€): ', code_point)
+
+# 3 получение кодовых точек для НЕ ascii-символов с помощью unicode_escape
 text = 'Привет!'.encode('unicode_escape')
 print(type(text))
 print("'Привет!'.encode('unicode_escape'): ", text)
 
 # ВАЖНО для домашнего задания!!!
-# Вариант 2 не является заменой варианта 1!!!!
+# Варианты 2 и 3 не является заменой варианта 1!!!!
 
 print('----------------------------------------------------')
 # функция ord позволяет получить числовое значение символа
