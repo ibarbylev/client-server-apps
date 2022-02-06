@@ -5,6 +5,9 @@
 Более подробно: 
 добавление фильтра: https://stackoverflow.com/questions/879732/logging-with-filters
 удаление фильтра: https://stackoverflow.com/questions/59314525/how-to-remove-a-log-filter-formatter
+
+Для исследования действия фильтра необходимо запустить не server.py, а
+server_where_log_is_class.py
 """
 
 
@@ -21,23 +24,15 @@ from functools import wraps
 class MyFilter(logging.Filter):
     """
     Фильтр позволяет записывать только те логи, которые удовлетворяют
-    какому-либо дополнительному условию. В нашем случае это наличие
-    слова <Функция> с большой буквы.
+    какому-либо дополнительному условию.
+    В нашем случае - это наличие слова <ФУнкция>, где две первых буквы заглавные.
     """
 
     def filter(self, record):
         return "фУнкция" in record.getMessage()
 
-    def removeFilter(self, filter):
-        """
-        Remove the specified filter from this handler.
-        """
-        if filter in self.filters:
-            self.filters.remove(filter)
-
 
 class Log:
-
     def __init__(self, logger=None):
         """
         Это декоратор с параметром - именем логера. В client.py и server.py
@@ -70,6 +65,7 @@ class Log:
             # создаём экземпляр класса нового фильтра и добавляем его в текущий логер
             new_filter = MyFilter()
             self.logger.addFilter(new_filter)
+            print('List of filters after adding new_filter: ', self.logger.filters)
 
             # -- Сообщение, где <функция> написана как "фУнкция" (пройдёт фильтарцию) --
             self.logger.debug(f'фУнкция {func.__name__} вызвана из функции {parent_func_name} '
@@ -81,6 +77,7 @@ class Log:
 
             # удаляем фильтр, иначе больше не запишется ни одно сообщение, где нет слова "фУнкция"
             self.logger.filters.remove(new_filter)
+            print('List of filters after removing new_filter: ', self.logger.filters)
 
             result = func(*args, **kwargs)
             return result
