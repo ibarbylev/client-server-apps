@@ -61,10 +61,18 @@ with open('kp_data_delimiter.csv', 'w', encoding='utf-8') as f_n:
     F_N_WRITER = csv.writer(f_n, delimiter="|")
     F_N_WRITER.writerows(DATA)
 
+print('----- чтение БЕЗ указания нового разделителя -----')
 with open('kp_data_delimiter.csv', encoding='utf-8') as f_n:
     F_N_READER = csv.reader(f_n)
     for row in F_N_READER:
         print(row)
+
+print('----- чтение С указанием нового разделителя -----')
+with open('kp_data_delimiter.csv', encoding='utf-8') as f_n:
+    F_N_READER = csv.reader(f_n, delimiter="|")
+    for row in F_N_READER:
+        print(row)
+
 
 print()
 print('----- список словарей в качестве исходных данных -----')
