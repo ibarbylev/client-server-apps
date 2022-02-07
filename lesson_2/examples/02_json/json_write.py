@@ -15,8 +15,10 @@ print('----- преобразование python-объекта (словаря)
 with open('mes_example_write_1.json', 'w', encoding='utf-8') as f_n:
     dict_as_string = json.dumps(DICT_TO_JSON)
     print('type(dict_as_string)', type(dict_as_string))
+    print('dict_as_string = ', dict_as_string)
     f_n.write(dict_as_string)
 
+print('----- считываем результат из файла "mes_example_write_1.json-" ----')
 with open('mes_example_write_1.json') as f_n:
     OBJ = json.load(f_n)
     pprint(OBJ)
