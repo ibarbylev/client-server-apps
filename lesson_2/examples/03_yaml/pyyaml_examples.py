@@ -33,7 +33,7 @@ with open('data_write.yaml', encoding='utf-8') as f_n:
 По умолчанию ключи в yaml сортируются
 yaml.dump(DATA_TO_YAML, f_n, sort_keys=True)
 
-Это можно отключить с помощью опции sortkeys=False
+Это можно отключить с помощью опции sort_keys=False
 yaml.dump(DATA_TO_YAML, f_n, sort_keys=False)
 """
 
