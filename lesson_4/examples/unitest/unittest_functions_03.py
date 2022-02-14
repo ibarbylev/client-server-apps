@@ -116,7 +116,7 @@ class TestSumKV(unittest.TestCase):
         Используем функцию assertRaises и unittest.mock.patch
         для проверки числа аргументов, переданных при запуске файла
         """
-        self.assertRaises(IndexError, my_file.parsing_command_line_options)
+        self.assertRaises(IndexError, my_file.parsing_command_line_parameters)
 
     def test_with_mock_patch_function_my_func_false_without_decorator(self):
         """
@@ -124,7 +124,7 @@ class TestSumKV(unittest.TestCase):
         для проверки числа аргументов, переданных при запуске файла
         """
         with patch.object(sys, 'argv', ['my_file.py', '-p']):
-            self.assertRaises(IndexError, my_file.parsing_command_line_options)
+            self.assertRaises(IndexError, my_file.parsing_command_line_parameters)
 
     @patch.object(sys, 'argv', ['my_file.py', '-p', 7777])
     def test_with_mock_patch_function_my_func_true_with_decorator(self):
@@ -132,7 +132,7 @@ class TestSumKV(unittest.TestCase):
         Используем функцию assertRaises и unittest.mock.patch
         для проверки числа аргументов, переданных при запуске файла
         """
-        self.assertEqual(7777, my_file.parsing_command_line_options())
+        self.assertEqual(7777, my_file.parsing_command_line_parameters())
 
     def test_with_mock_patch_function_my_func_true_without_decorator(self):
         """
@@ -140,7 +140,7 @@ class TestSumKV(unittest.TestCase):
         для проверки числа аргументов, переданных при запуске файла
         """
         with patch.object(sys, 'argv', ['my_file.py', '-p', 7777]):
-            self.assertEqual(7777, my_file.parsing_command_line_options())
+            self.assertEqual(7777, my_file.parsing_command_line_parameters())
 
 
 if __name__ == '__main__':
