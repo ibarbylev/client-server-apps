@@ -102,13 +102,21 @@ class TestSumKV(unittest.TestCase):
         division_by_zero = lambda x: x / 0
         self.assertRaises(ZeroDivisionError, division_by_zero, 5)
 
+# ===============================================================
+# ===============================================================
+
+# More complex (and more interesting!) options for unit testing.
+
+# ===============================================================
+# ===============================================================
+
     @patch.object(sys, 'argv', ['my_file.py', '-p'])   # sys.argv = ['my_file.py', '-p']
     def test_with_mock_patch_function_my_func_false_with_decorator(self):
         """
         Используем функцию assertRaises и unittest.mock.patch
         для проверки числа аргументов, переданных при запуске файла
         """
-        self.assertRaises(IndexError, my_file.my_func)
+        self.assertRaises(IndexError, my_file.parsing_command_line_options)
 
     def test_with_mock_patch_function_my_func_false_without_decorator(self):
         """
@@ -116,7 +124,7 @@ class TestSumKV(unittest.TestCase):
         для проверки числа аргументов, переданных при запуске файла
         """
         with patch.object(sys, 'argv', ['my_file.py', '-p']):
-            self.assertRaises(IndexError, my_file.my_func)
+            self.assertRaises(IndexError, my_file.parsing_command_line_options)
 
     @patch.object(sys, 'argv', ['my_file.py', '-p', 7777])
     def test_with_mock_patch_function_my_func_true_with_decorator(self):
@@ -124,7 +132,7 @@ class TestSumKV(unittest.TestCase):
         Используем функцию assertRaises и unittest.mock.patch
         для проверки числа аргументов, переданных при запуске файла
         """
-        self.assertEqual(7777, my_file.my_func())
+        self.assertEqual(7777, my_file.parsing_command_line_options())
 
     def test_with_mock_patch_function_my_func_true_without_decorator(self):
         """
@@ -132,7 +140,7 @@ class TestSumKV(unittest.TestCase):
         для проверки числа аргументов, переданных при запуске файла
         """
         with patch.object(sys, 'argv', ['my_file.py', '-p', 7777]):
-            self.assertEqual(7777, my_file.my_func())
+            self.assertEqual(7777, my_file.parsing_command_line_options())
 
 
 if __name__ == '__main__':
