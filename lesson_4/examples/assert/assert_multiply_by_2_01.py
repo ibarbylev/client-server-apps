@@ -35,12 +35,12 @@ def test_correct_multiply_by_zero():
 
 def test_correct_multiply_by_str():
     assert multiply_by_2("str") == 'Error!!! Argument <num> must be integer!!!', \
-        'Wrong answer if <num> is not integer!'
+        'Wrong answer if <num> is string!'
 
 
 def test_correct_multiply_by_float():
     assert multiply_by_2(0.1) == 'Error!!! Argument <num> must be integer!!!', \
-        'Wrong answer if <num> is not integer!'
+        'Wrong answer if <num> is float!'
 
 
 print(multiply_by_2(5))

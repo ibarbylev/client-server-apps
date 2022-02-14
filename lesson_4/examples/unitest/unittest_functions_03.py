@@ -35,11 +35,15 @@ def is_none(val_1):
     return val_2
 
 
+A = 5
+B = A
+
+
 class TestSumKV(unittest.TestCase):
-    """создаем тестовый случай"""
+    """Создаем тестовый случай"""
 
     def test_equal(self):
-        """создаем сам тест"""
+        """Создаем сам тест"""
 
         # используем функцию assertEqual
         self.assertEqual(sum_of_squares(2, 3), 13)
@@ -50,27 +54,27 @@ class TestSumKV(unittest.TestCase):
 
     def test_true(self):
         """используем функцию assertTrue"""
-        self.assertTrue(val_compare(10, 3), True)
+        self.assertTrue(val_compare(10, 3))
 
     def test_false(self):
         """используем функцию assertTrue"""
-        self.assertFalse(val_compare(10, 30), False)
+        self.assertFalse(val_compare(10, 30))
 
     def test_is(self):
         """используем функцию assertIs"""
-        self.assertIs(is_compare(Plane(), Plane()), False)
+        self.assertIs(A, B)
 
     def test_is_not(self):
         """используем функцию assertIsNot"""
-        self.assertIsNot(is_compare(Plane(), Plane()), True)
+        self.assertIsNot(Plane(), Plane())
 
     def test_is_none(self):
         """используем функцию assertIsNone"""
-        self.assertIsNone(is_none(None), True)
+        self.assertIsNone(is_none(None))
 
     def test_is_not_none(self):
         """используем функцию assertIsNotNone"""
-        self.assertIsNotNone(is_none("string"), True)
+        self.assertIsNotNone(is_none("string"))
 
     def test_in(self):
         """используем функцию assertIn"""
@@ -99,47 +103,36 @@ class TestSumKV(unittest.TestCase):
         self.assertRaises(ZeroDivisionError, division_by_zero, 5)
 
     @patch.object(sys, 'argv', ['my_file.py', '-p'])   # sys.argv = ['my_file.py', '-p']
-    def test_with_mock_patch_function_my_func_false_var1(self):
+    def test_with_mock_patch_function_my_func_false_with_decorator(self):
         """
         Используем функцию assertRaises и unittest.mock.patch
         для проверки числа аргументов, переданных при запуске файла
         """
         self.assertRaises(IndexError, my_file.my_func)
 
-    def test_with_mock_patch_function_my_func_false_var2(self):
+    def test_with_mock_patch_function_my_func_false_without_decorator(self):
         """
         Используем функцию assertRaises и unittest.mock.patch
         для проверки числа аргументов, переданных при запуске файла
         """
-        file_and_args = ['my_file.py', '-p']
-        with patch.object(sys, 'argv', file_and_args):
+        with patch.object(sys, 'argv', ['my_file.py', '-p']):
             self.assertRaises(IndexError, my_file.my_func)
 
     @patch.object(sys, 'argv', ['my_file.py', '-p', 7777])
-    def test_with_mock_patch_function_my_func_true(self):
+    def test_with_mock_patch_function_my_func_true_with_decorator(self):
         """
         Используем функцию assertRaises и unittest.mock.patch
         для проверки числа аргументов, переданных при запуске файла
         """
-        self.assertEqual(None, my_file.my_func())
+        self.assertEqual(7777, my_file.my_func())
 
-    def test_with_mock_patch_function_get_port_number_false(self):
+    def test_with_mock_patch_function_my_func_true_without_decorator(self):
         """
         Используем функцию assertRaises и unittest.mock.patch
         для проверки числа аргументов, переданных при запуске файла
         """
-        file_and_args = ['my_file.py', '-p']
-        with patch.object(sys, 'argv', file_and_args):
-            self.assertRaises(IndexError, my_file.get_port_number)
-
-    def test_with_mock_patch_function_get_port_number_true(self):
-        """
-        Используем функцию assertRaises и unittest.mock.patch
-        для проверки числа аргументов, переданных при запуске файла
-        """
-        file_and_args = ['my_file.py', '-p', 7777]
-        with patch.object(sys, 'argv', file_and_args):
-            self.assertEqual(7777, my_file.get_port_number())
+        with patch.object(sys, 'argv', ['my_file.py', '-p', 7777]):
+            self.assertEqual(7777, my_file.my_func())
 
 
 if __name__ == '__main__':
