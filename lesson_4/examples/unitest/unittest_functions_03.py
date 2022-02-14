@@ -102,13 +102,13 @@ class TestSumKV(unittest.TestCase):
         division_by_zero = lambda x: x / 0
         self.assertRaises(ZeroDivisionError, division_by_zero, 5)
 
-# ===============================================================
-# ===============================================================
-
-# More complex (and more interesting!) options for unit testing.
-
-# ===============================================================
-# ===============================================================
+# ======================================================================
+# **********************************************************************
+# ***                                                                ***
+# *** More complex (and more interesting!) options for unit testing. ***
+# ***                                                                ***
+# **********************************************************************
+# ======================================================================
 
     @patch.object(sys, 'argv', ['my_file.py', '-p'])   # sys.argv = ['my_file.py', '-p']
     def test_with_mock_patch_function_my_func_false_with_decorator(self):
