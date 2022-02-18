@@ -91,7 +91,8 @@ def main():
         # Ждём подключения, если таймаут вышел, ловим исключение.
         try:
             client, client_address = transport.accept()
-        except OSError:
+        except OSError as err:
+            print(err.errno)  # The error number returns None because it's just a timeout 
             pass
         else:
             LOGGER.info(f'Установлено соедение с ПК {client_address}')
