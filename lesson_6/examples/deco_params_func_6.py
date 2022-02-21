@@ -19,9 +19,7 @@ def decorator(iters):
                 delta = end - start
                 total_time += delta
                 print(f'#{i + 1}: {delta:.2f} sec')
-
             print(f'Среднее время выполнения: {total_time / iters:.2f} секунд')
-
         return wrapper
     return real_decorator
 
@@ -34,3 +32,6 @@ def get_wp(url):
 
 
 get_wp('https://google.com')
+# x = decorator(10)(get_wp)('https://google.com')
+# print(x.__name__)
+# print(x)
