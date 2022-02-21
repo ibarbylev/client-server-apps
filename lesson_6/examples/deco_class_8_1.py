@@ -17,3 +17,6 @@ def say_hi():
 say_hi()
 say_hi()
 say_hi()
+
+
+# CountCalls(say_hi)
