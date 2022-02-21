@@ -3,7 +3,7 @@
 import time
 
 
-def decorator(func):
+def timer(func):
     """Сам декоратор"""
     def wrapper(*args, **kwargs):
         """Обертка"""
@@ -16,7 +16,7 @@ def decorator(func):
     return wrapper
 
 
-@decorator
+@timer
 def get_list_loop(x):
     ll = []
     for idx in range(x):
@@ -24,7 +24,7 @@ def get_list_loop(x):
     return ll
 
 
-@decorator
+@timer
 def get_list_comp(x):
     return [idx for idx in range(x)]
 

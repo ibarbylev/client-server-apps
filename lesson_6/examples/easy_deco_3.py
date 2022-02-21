@@ -4,7 +4,7 @@ import time
 import requests
 
 
-def decorator(func):
+def timer(func):
     """Сам декоратор"""
     def wrapper(*args, **kwargs):
         """Обертка"""
@@ -17,7 +17,7 @@ def decorator(func):
     return wrapper
 
 
-@decorator
+@timer
 def get_wp(url):
     """Делаем запрос"""
     res = requests.get(url)

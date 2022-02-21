@@ -4,7 +4,7 @@ import time
 import requests
 
 
-def decorator(func):
+def timer(func):
     """Сам декоратор"""
     def wrapper():
         """Обертка"""
@@ -15,7 +15,7 @@ def decorator(func):
     return wrapper
 
 
-@decorator
+@timer
 def get_wp():
     """
     получаем ответ сервера
@@ -26,4 +26,4 @@ def get_wp():
     return res
 
 
-print(get_wp())
+get_wp()
