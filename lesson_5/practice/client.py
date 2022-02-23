@@ -86,6 +86,7 @@ def main():
         message_to_server = create_presence()
         send_message(transport, message_to_server)
         answer = process_ans(get_message(transport))
+        transport.close()
         CLIENT_LOGGER.info(f'Принят ответ от сервера {answer}')
         print(answer)
     except json.JSONDecodeError:
@@ -96,7 +97,6 @@ def main():
     except ReqFieldMissingError as missing_error:
         CLIENT_LOGGER.error(f'В ответе сервера отсутствует необходимое поле '
                             f'{missing_error.missing_field}')
-
 
 if __name__ == '__main__':
     main()
