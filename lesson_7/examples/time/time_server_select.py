@@ -32,7 +32,9 @@ def mainloop():
             conn, addr = sock.accept()
             print(conn)
         # timeout вышел
-        except OSError:
+        except OSError as err:
+            print(f'OSError code on the server side is : {err.errno}')
+            # The error number returns None because it's just a timeout
             pass
         else:
             print(f"Получен запрос на соединение с {str(addr)}")
