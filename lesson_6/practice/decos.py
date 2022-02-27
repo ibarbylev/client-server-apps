@@ -16,12 +16,8 @@ import inspect
 def log(func_to_log):
     """Функция-декоратор"""
     def log_saver(*args, **kwargs):
-        if sys.argv[0].find('client.py') == -1:
-            # если не клиент то сервер!
-            LOGGER = logging.getLogger('server')
-        else:
-            # ну, раз не сервер, то клиент
-            LOGGER = logging.getLogger('client')
+        logger_name = 'server' if 'server.py' in sys.argv[0] else 'client'
+        LOGGER = logging.getLogger(logger_name)
 
         ret = func_to_log(*args, **kwargs)
         LOGGER.debug(f'Была вызвана функция {func_to_log.__name__} c параметрами {args}, {kwargs}.'
