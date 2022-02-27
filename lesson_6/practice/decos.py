@@ -24,6 +24,7 @@ def log(func_to_log):
                      f'Вызов из модуля {func_to_log.__module__}.'
                      f'Вызов из функции {traceback.format_stack()[0].strip().split()[-1]}.'
                      
+                     # And two more options for determining the function from which the current function was called  
                      f'Вызов из функции {inspect.stack()[1][3]}'
                      
                      f'@@@Вызов из функции {sys._getframe().f_back.f_code.co_name}'
