@@ -44,7 +44,7 @@ def mainloop():
 
             clients_write = []
             try:
-                clients_read, clients_write, errors = select.select([], all_clients, [], 0)
+                _, clients_write, _ = select.select([], all_clients, [], 0)
 
             except Exception as e:
                 print(e)
