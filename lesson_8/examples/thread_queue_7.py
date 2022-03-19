@@ -19,7 +19,6 @@ class WorkerThread(Thread):
     def close(self):
         """Закрыть очередь"""
         self.input_queue.put(None)
-        self.input_queue.join()
 
     def run(self):
         while True:
