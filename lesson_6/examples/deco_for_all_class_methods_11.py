@@ -25,15 +25,15 @@ def dec_for_class(func_decor):
         """
         get_method = cls.__getattribute__
 
-        def changed_method(cls, name):
+        def modified_method(cls, name):
             method = get_method(cls, name)
             return func_decor(method)
-        cls.__getattribute__ = changed_method
+        cls.__getattribute__ = modified_method
         return cls
     return wrapper
 
 
-@dec_for_class(decorator)
+# @dec_for_class(decorator)
 class Example:
 
     @staticmethod
