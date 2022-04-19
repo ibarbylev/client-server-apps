@@ -9,10 +9,10 @@
 
 from chardet.universaldetector import UniversalDetector
 
-LINES_LST = ['сетевое программирование', 'сокет', 'декоратор']
+words = ['сетевое программирование', 'сокет', 'декоратор']
 with open('test.txt', 'w') as file:
-    for line in LINES_LST:
-        file.write(f'{line}\n')
+    for word in words:
+        file.write(f'{word}\n')
 file.close()
 
 # узнаем кодировку файла
@@ -38,5 +38,5 @@ print(DETECTOR.result['encoding'])
 
 # открываем файл в правильной кодировке
 with open('test.txt', 'r', encoding=DETECTOR.result['encoding']) as file:
-    CONTENT = file.read()
-print(CONTENT)
+    content = file.read()
+print(content)

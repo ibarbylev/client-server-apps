@@ -9,10 +9,10 @@
 
 from chardet import detect
 
-LINES_LST = ['сетевое программирование', 'сокет', 'декоратор']
+words = ['сетевое программирование', 'сокет', 'декоратор']
 with open('test.txt', 'w') as file:
-    for line in LINES_LST:
-        file.write(f'{line}\n')
+    for word in words:
+        file.write(f'{word}\n')
 
 
 # перезапись файла в нужной кодировке
