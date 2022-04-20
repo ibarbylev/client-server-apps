@@ -4,7 +4,7 @@ import socket
 import sys
 import json
 from common.variables import ACTION, ACCOUNT_NAME, RESPONSE, MAX_CONNECTIONS, \
-    PRESENCE, TIME, USER, ERROR, DEFAULT_PORT, RESPONDEFAULT_IP_ADDRESSSE
+    PRESENCE, TIME, USER, ERROR, DEFAULT_PORT
 from common.utils import get_message, send_message
 
 
@@ -27,12 +27,11 @@ def process_client_message(message):
 
 
 def main():
-    '''
-    Загрузка параметров командной строки, если нет параметров, то задаём значения по умоланию.
+    """
+    Загрузка параметров командной строки, если нет параметров, то задаём значения по умолчанию.
     Сначала обрабатываем порт:
     server.py -p 8888 -a 127.0.0.1
-    :return:
-    '''
+    """
 
     try:
         if '-p' in sys.argv:
@@ -45,8 +44,7 @@ def main():
         print('После параметра -\'p\' необходимо указать номер порта.')
         sys.exit(1)
     except ValueError:
-        print(
-            'В качастве порта может быть указано только число в диапазоне от 1024 до 65535.')
+        print('Номер порта может быть указано только в диапазоне от 1024 до 65535.')
         sys.exit(1)
 
     # Затем загружаем какой адрес слушать
@@ -69,19 +67,18 @@ def main():
     transport.bind((listen_address, listen_port))
 
     # Слушаем порт
-
     transport.listen(MAX_CONNECTIONS)
 
     while True:
         client, client_address = transport.accept()
         try:
-            message_from_cient = get_message(client)
-            print(message_from_cient)
-            response = process_client_message(message_from_cient)
+            message_from_client = get_message(client)
+            print(message_from_client)
+            response = process_client_message(message_from_client)
             send_message(client, response)
             client.close()
         except (ValueError, json.JSONDecodeError):
-            print('Принято некорретное сообщение от клиента.')
+            print('Принято некорректное сообщение от клиента.')
             client.close()
 
 
