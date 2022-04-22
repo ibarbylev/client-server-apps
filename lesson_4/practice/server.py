@@ -9,12 +9,10 @@ from common.utils import get_message, send_message
 
 
 def process_client_message(message):
-    '''
-    Обработчик сообщений от клиентов, принимает словарь - сообщение от клинта,
+    """Обработчик сообщений от клиентов, принимает словарь - сообщение от клиента,
     проверяет корректность, возвращает словарь-ответ для клиента
-    :param message:
-    :return:
-    '''
+    """
+
     if ACTION in message and message[ACTION] == PRESENCE and TIME in message \
             and USER in message and message[USER][ACCOUNT_NAME] == 'Guest':
         return {RESPONSE: 200}
@@ -25,11 +23,9 @@ def process_client_message(message):
 
 
 def main():
-    '''
-    Загрузка параметров командной строки, если нет параметров, то задаём значения по умоланию.
-    Сначала обрабатываем порт:
-    :return:
-    '''
+    """Загрузка параметров командной строки, если нет параметров,
+    то задаём значения по умолчанию. Сначала обрабатываем порт
+    """
     try:
         if '-p' in sys.argv:
             listen_port = int(sys.argv[sys.argv.index('-p') + 1])
@@ -41,7 +37,7 @@ def main():
         print('После параметра -\'p\' необходимо указать номер порта.')
         sys.exit(1)
     except ValueError:
-        print('В качастве порта может быть указано только число в диапазоне от 1024 до 65535.')
+        print('В качестве порта может быть указано только число в диапазоне от 1024 до 65535.')
         sys.exit(1)
 
     # Затем загружаем какой адрес слушать
@@ -74,7 +70,7 @@ def main():
             send_message(client, response)
             client.close()
         except (ValueError, json.JSONDecodeError):
-            print('Принято некорретное сообщение от клиента.')
+            print('Принято некорректное сообщение от клиента.')
             client.close()
 
 
