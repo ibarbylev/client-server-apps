@@ -113,7 +113,7 @@ class TestUtils(unittest.TestCase):
 
     def test_get_message_dict(self):
         """
-        Проверяет является ли возвращаемый объект словарем
+        Проверяет, является ли возвращаемый объект словарем
         """
         message = json.dumps(self.test_correct_response)
         self.client.send(message.encode(ENCODING))
