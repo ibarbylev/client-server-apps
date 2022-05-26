@@ -31,6 +31,6 @@ if __name__ == '__main__':
     log.debug('Отладочная информация. Параметры подключения: %(host)s, %(port)d', PARAMS)
     log.info('Информационное сообщение. Параметры подключения: %(host)s, %(port)d', PARAMS)
     log.warning('Предупреждение. Параметры подключения: %(host)s, %(port)d', PARAMS)
-    log.error(f'Ошибка. Параметры подключения: {PARAMS["host"]},  {PARAMS["port"]}')
+    log.error(f'Ошибка. Параметры подключения: {PARAMS["host"]}, {PARAMS["port"]}')
     log.critical(f'Критическое общение. Параметры подключения: '
-                 f'{PARAMS["host"]},  {PARAMS["port"]}')
+                 f'{PARAMS["host"]}, {PARAMS["port"]}')
