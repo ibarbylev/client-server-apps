@@ -4,7 +4,7 @@
 """
 
 from select import select
-from socket import socket, AF_INET, SOCK_STREAM
+from socket import socket, AF_INET, SOCK_STREAM, SOL_SOCKET, SO_REUSEADDR
 
 
 def read_requests(read_clients, all_clients):
@@ -52,6 +52,7 @@ def mainloop():
     all_clients = []
 
     with socket(AF_INET, SOCK_STREAM) as sock:
+        sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
         sock.bind(address)
         sock.listen(5)
         sock.settimeout(1)
