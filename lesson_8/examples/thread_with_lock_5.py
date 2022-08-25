@@ -5,7 +5,7 @@ import threading
 SHARED_RESOURCE_WITH_LOCK = 0
 SHARED_RESOURCE_WITH_NO_LOCK = 0
 COUNT = 100
-SHARED_RESOURCE_LOCK = threading.RLock()
+SHARED_RESOURCE_LOCK = threading.Lock()
 
 
 def increment_with_lock():
