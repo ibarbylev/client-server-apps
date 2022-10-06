@@ -13,7 +13,9 @@ def process_client_message(message):
     сообщение от клиента, проверяет корректность,
     возвращает словарь-ответ для клиента
     """
-    if ACTION in message and message[ACTION] == PRESENCE and TIME in message \
+    if ACTION in message \
+            and message[ACTION] == PRESENCE \
+            and TIME in message \
             and USER in message and message[USER][ACCOUNT_NAME] == 'Guest':
         return {RESPONSE: 200}
     return {
