@@ -1,37 +1,34 @@
-"""Простейший декоратор-функция с параметром"""
+"""Decorator-function with parameter"""
 
 import time
-import requests
 
 
-def decorator(iters):
-    print('Этот декоратор!!!!')
+def sleep(timeout):
     """Внешняя функция (формально - декоратор)"""
-    def real_decorator(func):
+    def decorator(func):
         """Сам декоратор"""
-        def wrapper(*args, **kwargs):
+        def decorated(*args, **kwargs):
             """Обертка"""
-            total_time = 0
-            for i in range(iters):
-                start = time.time()
-                func(*args, **kwargs)
-                end = time.time()
-                delta = end - start
-                total_time += delta
-                print(f'#{i + 1}: {delta:.2f} sec')
-            print(f'Среднее время выполнения: {total_time / iters:.2f} секунд')
-        return wrapper
-    return real_decorator
+
+            time.sleep(timeout)
+            res = func(*args, **kwargs)
+
+            print(f'Функция {func.__name__} зависла')
+            return res
+        return decorated
+    return decorator
 
 
-@decorator(10)
-def get_wp(url):
-    """Запрос"""
-    res = requests.get(url)
-    return res
+@sleep(3)
+def factorial(param):
+    """Вычисляем факториал"""
+    if param <= 1:
+        return 1
+    else:
+        return param * factorial(param - 1)
 
 
-get_wp('https://google.com')
-# x = decorator(10)(get_wp)('https://google.com')
-# print(x.__name__)
-# print(x)
+print(' -- Использован декоратор, реализованный через функцию --')
+print('!!! Обратите внимание на то, сколько раз будет вызван декоратор (рекурсия) !!!')
+print(factorial(5))
+print()

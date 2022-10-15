@@ -1,4 +1,4 @@
-"""Простейший декоратор-функция с параметром"""
+"""Decorator-function with parameter"""
 
 import time
 
