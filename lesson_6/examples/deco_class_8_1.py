@@ -5,7 +5,7 @@ class CountCalls:
 
     def __call__(self, *args, **kwargs):
         self.num_calls += 1
-        print(f"Call {self.num_calls} of {self.func.__name__!r}")
+        print(f"Call {self.num_calls} of {self.func.__name__}")
         return self.func(*args, **kwargs)
 
 
