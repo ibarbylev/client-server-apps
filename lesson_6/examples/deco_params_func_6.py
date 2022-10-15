@@ -1,37 +1,34 @@
-"""Простейший декоратор-функция с параметром"""
+"""Decorator-function with parameter"""
 
 import time
-import requests
 
 
-def decorator(iters):
-    print('Этот декоратор!!!!')
-    """Внешняя функция (формально - декоратор)"""
-    def real_decorator(func):
-        """Сам декоратор"""
-        def wrapper(*args, **kwargs):
-            """Обертка"""
-            total_time = 0
-            for i in range(iters):
-                start = time.time()
-                func(*args, **kwargs)
-                end = time.time()
-                delta = end - start
-                total_time += delta
-                print(f'#{i + 1}: {delta:.2f} sec')
-            print(f'Среднее время выполнения: {total_time / iters:.2f} секунд')
-        return wrapper
-    return real_decorator
+def sleep(timeout):
+    """Outer function passes parameter <timeout>"""
+    def decorator(func):
+        """Middle function as decorator"""
+        def decorated(*args, **kwargs):
+            """Inner function as wrapper"""
+
+            time.sleep(timeout)
+            res = func(*args, **kwargs)
+
+            print(f'Function {func.__name__} is working...')
+            return res
+        return decorated
+    return decorator
 
 
-@decorator(10)
-def get_wp(url):
-    """Запрос"""
-    res = requests.get(url)
-    return res
+@sleep(3)
+def factorial(param):
+    """Calculate factorial"""
+    if param <= 1:
+        return 1
+    else:
+        return param * factorial(param - 1)
 
 
-get_wp('https://google.com')
-# x = decorator(10)(get_wp)('https://google.com')
-# print(x.__name__)
-# print(x)
+print('!!! Pay attention to how many times the decorator for the recursive function '
+      'will be called !!!')
+print(factorial(5))
+print()
