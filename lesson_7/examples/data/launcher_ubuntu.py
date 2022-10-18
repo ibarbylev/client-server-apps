@@ -13,6 +13,7 @@ from time import sleep
 
 PYTHON_PATH = sys.executable
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
+CLIENTS_COUNT = 2
 
 
 def get_subprocess(file_with_args):
@@ -22,7 +23,7 @@ def get_subprocess(file_with_args):
     return subprocess.Popen(args, preexec_fn=os.setpgrp)
 
 
-process = []
+processes = []
 while True:
     TEXT_FOR_INPUT = "Select action: q - quit, s - run server and clients, x - close all windows: "
     action = input(TEXT_FOR_INPUT)
@@ -30,12 +31,12 @@ while True:
     if action == "q":
         break
     elif action == "s":
-        process.append(get_subprocess("echo_server_select.py"))
+        processes.append(get_subprocess("echo_server_select.py"))
 
-        for i in range(2):
-            process.append(get_subprocess("echo_client_select.py"))
+        for i in range(CLIENTS_COUNT):
+            processes.append(get_subprocess("echo_client_select.py"))
 
     elif action == "x":
-        while process:
-            victim = process.pop()
+        while processes:
+            victim = processes.pop()
             os.killpg(victim.pid, signal.SIGINT)

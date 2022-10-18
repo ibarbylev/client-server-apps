@@ -24,23 +24,23 @@ def get_subprocess(file_with_args):
     return subprocess.Popen(args, preexec_fn=os.setpgrp)
 
 
-P_LIST = []
+processes = []
 while True:
-    TEXT_FOR_INPUT = f"Запустить {CLIENTS_COUNT} клиентов (s) / Закрыть клиентов (x) / Выйти (q): "
-    USER = input(TEXT_FOR_INPUT)
+    question = f"Запустить {CLIENTS_COUNT} клиентов (s) / Закрыть клиентов (x) / Выйти (q): "
+    choice = input(question)
 
-    if USER == "q":
+    if choice == "q":
         break
-    elif USER == "s":
+    elif choice == "s":
 
-        P_LIST.append(get_subprocess("time_server_select.py"))
+        processes.append(get_subprocess("time_server_select.py"))
         time.sleep(0.2)
         for i in range(CLIENTS_COUNT):
-            P_LIST.append(get_subprocess("time_client_random.py"))
+            processes.append(get_subprocess("time_client_random.py"))
 
         print(f'Число запущенных клиентских скриптов: {CLIENTS_COUNT}')
 
-    elif USER == "x":
-        while P_LIST:
-            victim = P_LIST.pop()
+    elif choice == "x":
+        while processes:
+            victim = processes.pop()
             os.killpg(victim.pid, signal.SIGINT)
