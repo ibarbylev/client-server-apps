@@ -1,24 +1,24 @@
-"""Программа клиента, отправляющего/читающего простые текстовые сообщения на сервер"""
+"""Client script that sends/reads simple text messages to the server"""
 
 from socket import socket, AF_INET, SOCK_STREAM
 
-ADDRESS = ('localhost', 10000)
+address = ('localhost', 10000)
 
 
 def echo_client():
-    """Общение с сервером"""
+    """Communicate with server"""
     with socket(AF_INET, SOCK_STREAM) as sock:
-        sock.connect(ADDRESS)
+        sock.connect(address)
         while True:
-            # Сообщение не должно состоять из пустой строки или пробелов
+            # The message must not consist of an empty string or spaces
             msg = ''
             while msg.strip() == '':
-                msg = input('Ваше сообщение: ')
+                msg = input('Please enter your message: ')
             if msg == 'exit':
                 break
             sock.send(msg.encode('utf-8'))
             data = sock.recv(1024).decode('utf-8')
-            print(f"Ответ: {data}")
+            print(f"Answer: {data}")
 
 
 if __name__ == '__main__':

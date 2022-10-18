@@ -1,6 +1,5 @@
-"""
-Эхо-сервер, обрабатывающий "одновременно" несколько клиентов
-Обработка клиентов осуществляется функцией select
+"""Echo server handling simultaneous multiple clients
+using the select function
 """
 
 from select import select
@@ -8,7 +7,7 @@ from socket import socket, AF_INET, SOCK_STREAM, SOL_SOCKET, SO_REUSEADDR
 
 
 def read_requests(read_clients, all_clients):
-    """Чтение запросов из списка клиентов"""
+    """Reading requests from the list of clients"""
 
     responses = {}
 
@@ -26,7 +25,7 @@ def read_requests(read_clients, all_clients):
 
 
 def write_responses(requests, clients_write, all_clients):
-    """Эхо-ответ сервера клиентам, от которых были запросы"""
+    """Response to clients from which requests were made"""
 
     for sock in clients_write:
         if sock in requests:
@@ -38,15 +37,15 @@ def write_responses(requests, clients_write, all_clients):
                 sock.send(resp.encode('utf-8'))
             except Exception as e:
                 print(e)
-                # sock.fileno() - вернуть дескриптор файла сокетов (небольшое целое число)
-                # sock.getpeername() - получить IP-адрес и номер порта клиента
-                print(f"Клиент {sock.fileno()} {sock.getpeername()} отключился")
+                # sock.fileno() - client socket file descriptor (small integer)
+                # sock.getpeername() - ip-address and port of client's socket
+                print(f"Client  {sock.fileno()} {sock.getpeername()} disconnected")
                 all_clients.remove(sock)
                 sock.close()
 
 
 def mainloop():
-    """Основной цикл обработки запросов клиентов"""
+    """Main client request processing loop"""
 
     address = ('', 10000)
     all_clients = []
@@ -62,7 +61,7 @@ def mainloop():
             except OSError as err:
                 pass
             else:
-                print(f"Получен запрос на соединение от {str(addr)}")
+                print(f"Connection request received from {str(addr)}")
                 all_clients.append(conn)
             finally:
                 wait = 0
@@ -82,5 +81,5 @@ def mainloop():
                     write_responses(requests, clients_write, all_clients)
 
 
-print('Эхо-сервер запущен!')
+print('Echo server started...')
 mainloop()
