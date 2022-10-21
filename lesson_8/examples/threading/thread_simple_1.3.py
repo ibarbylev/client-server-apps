@@ -32,7 +32,7 @@ THR2.start()
 THR2.join()
 end = time.time()
 print(f"Время окончания основной программы: {time.ctime()}")
-print('end-start =', end-start)
+print(f'end-start = {end-start:0.2f}')
 
 # сначала отрабатывает первый поток
 # после завершения первого потока, начинатся и заканчивается второй

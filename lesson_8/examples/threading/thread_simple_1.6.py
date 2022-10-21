@@ -33,7 +33,7 @@ THR1.join()
 THR2.join()
 end = time.time()
 print(f"Время окончания основной программы: {time.ctime()}")
-print('end-start =', end-start)
+print(f'end-start = {end-start:0.2f}')
 
 # первый, второй и основной потоки начинают одновременно
 # все потоки завершаются после завершения основного
