@@ -13,7 +13,7 @@ async def get_code_response(url):
 
 
 async def main(urls: list):
-    x = await asyncio.gather(*(get_code_response(url) for url in urls))
+    await asyncio.gather(*(get_code_response(url) for url in urls))
 
 if __name__ == "__main__":
     start = time.perf_counter()
