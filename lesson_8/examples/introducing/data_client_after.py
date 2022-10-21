@@ -6,7 +6,7 @@ from socket import socket, AF_INET, SOCK_STREAM
 
 with socket(AF_INET, SOCK_STREAM) as client_sock:
     client_sock.connect(('localhost', 8007))
-    mode = ['--send', '--listen'][True or False]
+    mode = ['--send', '--listen'][False]
     while True:
         if mode == '--send':
             MSG = 'Hi, server!'
